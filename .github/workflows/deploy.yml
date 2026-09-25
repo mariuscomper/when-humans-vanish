@@ -25,11 +25,14 @@ jobs:
         run: |
           node --check worker.js
           # Root-absolute asset refs would 404: the page lives in a subfolder.
-          if grep -rEn '(src|href)="/|url\(/' index.html css js vendor; then
+          if grep -rEn '(src|href)="/|url\(/' index.html ro css js vendor; then
             echo "::error::root-absolute asset refs break subfolder hosting"
             exit 1
           fi
-          for f in index.html favicon.svg og.png robots.txt sitemap.xml css/style.css \
+          # ro/index.html is generated; fail if it is stale
+          node tools/build-ro.js
+          git diff --exit-code -- ro/index.html || { echo "::error::ro/index.html is stale: run node tools/build-ro.js"; exit 1; }
+          for f in index.html ro/index.html favicon.svg og.png robots.txt sitemap.xml css/style.css \
                    data/cities.json data/land-110m.json data/plants.json \
                    data/region-ro.json data/rivers-ro.json js/core.js js/i18n.js; do
             test -s "$f" || { echo "::error::missing $f"; exit 1; }
@@ -39,7 +42,7 @@ jobs:
         run: |
           mkdir -p public
           cp index.html favicon.svg og.png robots.txt sitemap.xml public/
-          cp -r css data js vendor public/
+          cp -r css data js vendor ro public/
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
@@ -55,6 +58,7 @@ jobs:
         run: |
           for i in $(seq 1 12); do
             if curl -sf https://mariuscomper.uk/when-humans-vanish/ | grep -q 'When Humans Vanish' \
+              && curl -sf https://mariuscomper.uk/when-humans-vanish/ro/ | grep -q 'lang="ro"' \
               && curl -sfo /dev/null https://mariuscomper.uk/when-humans-vanish/js/core.js \
               && curl -sfo /dev/null https://mariuscomper.uk/when-humans-vanish/data/plants.json; then
               echo "live"

@@ -1,5 +1,7 @@
 /* Core: scroll engine, deep-time gauge, formatting, canvas helpers. */
 (function () {
+  // no-js -> js as early as possible (an inline script would be blocked by the site's CSP)
+  document.documentElement.classList.replace('no-js', 'js');
   const WHV = (window.WHV = window.WHV || {});
   WHV.factories = WHV.factories || {};
   WHV.register = (name, factory) => { WHV.factories[name] = factory; };
