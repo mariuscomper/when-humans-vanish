@@ -164,16 +164,15 @@
 
     function iceShape(g) {
       const ring = [];
+      // descending longitude keeps the ring wound around the pole (small interior) for every g
       for (let lon = 180; lon >= -180; lon -= 2) ring.push([lon, 90 - (90 - lgmLat(lon)) * g]);
-      const f = { type: 'Feature', geometry: { type: 'Polygon', coordinates: [ring] } };
-      if (d3.geoArea(f) > 2 * Math.PI) ring.reverse();
-      return f;
+      return { type: 'Feature', geometry: { type: 'Polygon', coordinates: [ring] } };
     }
 
+    // Monotonic in time so scrolling never pumps the ice back and forth:
+    // it builds to a full glacial maximum, then eases back toward an interglacial.
     function iceAmount(t) {
-      let g = W.smooth(22e3, 62e3, t);
-      if (t > 90e3) g *= 0.55 + 0.45 * Math.cos((2 * Math.PI * (t - 62e3)) / 100e3);
-      return g;
+      return W.smooth(22e3, 62e3, t) * (1 - 0.65 * W.smooth(2e5, 9e5, t));
     }
 
     function render({ t, dt }) {

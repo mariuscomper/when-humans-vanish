@@ -163,6 +163,9 @@
       const t = +el.dataset.t;
       if (a > 0) {
         if (!prev) return TMIN;
+        // Chapters follow their own threads, so time can jump back at a chapter start.
+        // Never slide backwards: hold the old time until the new chapter's first card arrives.
+        if (t < prev.t) return Math.max(prev.t, TMIN);
         const k = WHV.clamp(-prev.a / (a - prev.a));
         return Math.pow(10, WHV.lerp(L(prev.t), L(t), k));
       }
@@ -205,7 +208,7 @@
     for (const sc of scenes) {
       if (!sc.visible || !sc.api) continue;
       measureScene(sc);
-      try { sc.api.render({ p: sc.p, s: sc.s, t: WHV.t, now, dt }); } catch (e) { console.error(sc.name, e); sc.api = null; }
+      try { sc.api.render({ p: sc.p, s: sc.s, t: WHV.clamp(WHV.t, sc.tMin, sc.tMax), now, dt }); } catch (e) { console.error(sc.name, e); sc.api = null; }
     }
     requestAnimationFrame(frame);
   }
@@ -217,6 +220,10 @@
     document.querySelectorAll('[data-scene]').forEach((el) => {
       const name = el.dataset.scene;
       const sc = { name, el, steps: [...el.querySelectorAll('.step')], visible: false, p: 0, s: -1, api: null };
+      // each scene only ever sees the time span its own steps cover
+      const ts = sc.steps.map((st) => +st.dataset.t).filter((v) => !isNaN(v));
+      sc.tMin = ts.length ? Math.min(...ts) : 0;
+      sc.tMax = ts.length ? Math.max(...ts) : Infinity;
       scenes.push(sc);
       io.observe(el);
       const f = WHV.factories[name];
