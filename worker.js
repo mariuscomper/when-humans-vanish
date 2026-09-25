@@ -24,7 +24,7 @@ function securityHeaders(headers, release) {
   headers.set("Strict-Transport-Security", "max-age=63072000; includeSubDomains");
 }
 
-function withHeaders(response, path, release) {
+function withHeaders(response, path, release, versioned) {
   const headers = new Headers(response.headers);
   // /ro/ is the Romanian edition; everything else is English (or language-neutral assets)
   headers.set("Content-Language", /^\/ro(\/|$)/.test(path) ? "ro-RO" : "en-GB");
@@ -42,7 +42,12 @@ function withHeaders(response, path, release) {
   if (type && !/charset=/i.test(type) && /^(?:text\/|application\/(?:json|javascript|xml))/i.test(type)) {
     headers.set("Content-Type", `${type}; charset=utf-8`);
   }
-  if (/\.(png|webp|jpg|jpeg|svg|woff2|json|js|css)$/i.test(path)) headers.set("Cache-Control", "public, max-age=86400");
+  // Pages always revalidate. Assets stamped ?v=<release> by the deploy never change, so they
+  // cache for a year; an unstamped script or stylesheet must revalidate, or a browser could pair
+  // a new page with last release's CSS.
+  if (versioned && /\.(json|js|css)$/i.test(path)) headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  else if (/\.(json|js|css)$/i.test(path)) headers.set("Cache-Control", "no-cache, must-revalidate");
+  else if (/\.(png|webp|jpg|jpeg|svg|woff2)$/i.test(path)) headers.set("Cache-Control", "public, max-age=86400");
   else headers.set("Cache-Control", "no-cache, must-revalidate, no-transform");
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
 }
@@ -96,6 +101,6 @@ export default {
     assetUrl.pathname = path;
     const response = await env.ASSETS.fetch(new Request(assetUrl.toString(), request));
     if (response.status === 404) return notFound(request, release);
-    return withHeaders(response, path, release);
+    return withHeaders(response, path, release, url.searchParams.has("v"));
   },
 };

@@ -26,8 +26,10 @@
   // data/ sits next to js/, whichever page (/ or /ro/) loaded us
   const src = document.currentScript && document.currentScript.src;
   const ROOT = src ? new URL('../', src) : new URL('./', location.href);
+  // the deploy stamps script URLs with ?v=<release>; data files get the same stamp
+  const VERSION = src ? new URL(src).search : '';
   const cache = {};
-  WHV.load = (name) => (cache[name] = cache[name] || fetch(new URL('data/' + name, ROOT)).then((r) => {
+  WHV.load = (name) => (cache[name] = cache[name] || fetch(new URL('data/' + name + VERSION, ROOT)).then((r) => {
     if (!r.ok) throw new Error(name + ' ' + r.status);
     return r.json();
   }));

@@ -43,6 +43,12 @@ jobs:
           mkdir -p public
           cp index.html favicon.svg og.png robots.txt sitemap.xml public/
           cp -r css data js vendor ro public/
+          # Stamp every stylesheet/script URL with this release so browsers never mix
+          # a new page with a cached old stylesheet (core.js passes the stamp on to data/).
+          V="${GITHUB_SHA::10}"
+          sed -E -i "s#((href|src)=\"(\.\./)?(css|js|vendor)/[^\"?]+)\"#\1?v=$V\"#g" public/index.html public/ro/index.html
+          grep -q "css/style.css?v=$V" public/index.html && grep -q "js/core.js?v=$V" public/ro/index.html \
+            || { echo "::error::asset versioning failed"; exit 1; }
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
