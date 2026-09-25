@@ -1,0 +1,95 @@
+const PREFIX = "/when-humans-vanish";
+const ORIGIN = "https://mariuscomper.uk";
+const CONTENT_SIGNAL = "ai-train=no, search=yes, ai-input=yes";
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'", // page positions scenes via JS-set inline styles
+  "img-src 'self' data: blob:",
+  "font-src 'self' https://fonts.gstatic.com",
+  "connect-src 'self'",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
+function securityHeaders(headers, release) {
+  headers.set("Content-Signal", CONTENT_SIGNAL);
+  headers.set("X-Microsite-Release", release);
+  headers.set("X-Content-Type-Options", "nosniff");
+  headers.set("X-Frame-Options", "DENY");
+  headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  headers.set("Content-Security-Policy", CSP);
+  headers.set("Strict-Transport-Security", "max-age=63072000; includeSubDomains");
+  headers.set("Content-Language", "en-GB");
+}
+
+function withHeaders(response, path, release) {
+  const headers = new Headers(response.headers);
+  // The assets binding sees prefix-less paths, so its own redirects lose the prefix.
+  const location = headers.get("Location");
+  if (location && response.status >= 300 && response.status < 400) {
+    try {
+      const target = new URL(location, ORIGIN);
+      if (!target.pathname.startsWith(PREFIX + "/")) target.pathname = PREFIX + target.pathname;
+      headers.set("Location", target.toString());
+    } catch (e) { /* leave an unparsable Location alone */ }
+  }
+  securityHeaders(headers, release);
+  const type = headers.get("Content-Type");
+  if (type && !/charset=/i.test(type) && /^(?:text\/|application\/(?:json|javascript|xml))/i.test(type)) {
+    headers.set("Content-Type", `${type}; charset=utf-8`);
+  }
+  if (/\.(png|webp|jpg|jpeg|svg|woff2|json|js|css)$/i.test(path)) headers.set("Cache-Control", "public, max-age=86400");
+  else headers.set("Cache-Control", "no-cache, must-revalidate, no-transform");
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+}
+
+function notFound(request, release) {
+  const headers = new Headers({ "Content-Type": "text/html; charset=utf-8" });
+  securityHeaders(headers, release);
+  headers.set("Cache-Control", "no-store, max-age=0, no-transform");
+  const body = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Not found · When Humans Vanish</title><style>body{background:#06080d;color:#e8e4d8;font-family:Georgia,serif;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#e8e4d8}</style></head><body><main><h1>Nothing here — not even ruins.</h1><p><a href="${PREFIX}/">Back to When Humans Vanish</a></p></main></body></html>`;
+  return new Response(request.method === "HEAD" ? null : body, { status: 404, headers });
+}
+
+export default {
+  async fetch(request, env) {
+    const release = env.RELEASE_STAMP || "manual-deploy";
+    const url = new URL(request.url);
+    if (url.pathname !== PREFIX && !url.pathname.startsWith(PREFIX + "/")) return notFound(request, release);
+    if (request.method !== "GET" && request.method !== "HEAD") {
+      const headers = new Headers({ Allow: "GET, HEAD", "Content-Type": "text/plain; charset=utf-8" });
+      securityHeaders(headers, release);
+      headers.set("Cache-Control", "no-store, no-transform");
+      return new Response("Method not allowed", { status: 405, headers });
+    }
+    if (url.pathname === PREFIX) {
+      url.pathname += "/";
+      const headers = new Headers({ Location: url.toString() });
+      securityHeaders(headers, release);
+      return new Response(null, { status: 301, headers });
+    }
+    const path = url.pathname.slice(PREFIX.length);
+    // Language edition shortcuts: clean catalogue URLs that land on the
+    // page's own ?lang= mechanism.
+    const edition = /^\/(en|ro)\/?$/.exec(path);
+    if (edition) {
+      url.pathname = PREFIX + "/";
+      url.searchParams.set("lang", edition[1]);
+      const headers = new Headers({ Location: url.toString() });
+      securityHeaders(headers, release);
+      headers.set("Cache-Control", "public, max-age=86400");
+      return new Response(null, { status: 301, headers });
+    }
+    // Never serve index.html as its own address.
+    if (/\/index\.html$/.test(path)) return notFound(request, release);
+
+    const assetUrl = new URL(request.url);
+    assetUrl.pathname = path;
+    const response = await env.ASSETS.fetch(new Request(assetUrl.toString(), request));
+    if (response.status === 404) return notFound(request, release);
+    return withHeaders(response, path, release);
+  },
+};
