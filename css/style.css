@@ -270,6 +270,28 @@ input[type="range"] { accent-color: var(--sodium); cursor: pointer; height: 32px
 .verdict.adapt { color: #7a5a12; }
 .verdict.gone { color: #9a2a3a; }
 
+/* the drawer under the specimens: a question readers asked */
+.aside {
+  max-width: 46rem; margin-top: 2.2rem;
+  border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line);
+}
+.aside summary {
+  cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 14px;
+  padding: 1.1rem 0; font-family: var(--f-display); font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; color: var(--bone);
+}
+.aside summary::-webkit-details-marker { display: none; }
+.aside summary::before {
+  content: "+"; flex: none; font: 400 1rem/1 var(--f-mono); color: var(--sodium);
+  width: 26px; height: 26px; display: inline-grid; place-items: center; border: 1px solid var(--sodium); border-radius: 50%;
+  transform: translateY(-3px); transition: transform .25s ease;
+}
+.aside[open] summary::before { content: "−"; }
+.aside summary:hover { color: #fff; }
+.aside-body { padding: 0 0 1.4rem 40px; color: var(--bone-2); }
+.aside-body p { margin: 0 0 0.9em; }
+.aside-body p:last-child { margin-bottom: 0; color: var(--bone); font-style: italic; }
+@media (max-width: 860px) { .aside-body { padding-left: 0; } }
+
 /* longevity chart */
 .lasts-control { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 4px 16px; max-width: 760px; margin-bottom: 1.4rem; }
 .lasts-control output { font-family: var(--f-display); font-size: clamp(2rem, 5vw, 3rem); line-height: 1; font-variant-numeric: tabular-nums; text-align: right; }
