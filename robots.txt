@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mariuscomper.uk/when-humans-vanish/sitemap.xml
