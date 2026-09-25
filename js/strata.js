@@ -7,7 +7,7 @@
 
   const NAMES = {
     future: { en: 'Rock laid down after us: 100 million years of mud, sand and shells', ro: 'Rocă depusă după noi: 100 de milioane de ani de mâl, nisip și scoici' },
-    human: { en: 'Our layer: concrete, aluminium, plastic films, odd isotopes, chicken bones', ro: 'Stratul nostru: beton, aluminiu, pelicule de plastic, izotopi ciudați, oase de pui' },
+    human: { en: 'Our layer: concrete, aluminium, plastic films, fallout isotopes, chicken bones', ro: 'Stratul nostru: beton, aluminiu, pelicule de plastic, izotopi radioactivi, oase de pui' },
     holocene: { en: 'The age of farmers: 11,700 years of soil', ro: 'Epoca agricultorilor: 11.700 de ani de sol' },
     pleisto: { en: 'Ice-age gravels', ro: 'Pietrișuri din epoca glaciară' },
     older: { en: 'Older rock: the world before us', ro: 'Roci mai vechi: lumea de dinaintea noastră' },
@@ -52,11 +52,13 @@
     let hover = null;
     const o = W.canvas(cv);
 
-    cv.addEventListener('pointermove', (e) => {
-      const b = cv.getBoundingClientRect();
-      hover = { x: e.clientX - b.left, y: e.clientY - b.top };
-    });
-    cv.addEventListener('pointerleave', () => { hover = null; tip.hidden = true; });
+    const point = (e) => { const b = cv.getBoundingClientRect(); hover = { x: e.clientX - b.left, y: e.clientY - b.top }; };
+    // hover with a mouse, tap on a touch screen
+    cv.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse') point(e); });
+    cv.addEventListener('pointerdown', point);
+    cv.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hover = null; tip.hidden = true; } });
+    const keyItems = [...el.querySelectorAll('#strata-key li')];
+    let lastKind = '';
 
     function drawFossil(ctx, f, x, y, k) {
       ctx.save(); ctx.translate(x, y); ctx.rotate(f.rot); ctx.scale(k * f.s, k * f.s);
@@ -156,6 +158,11 @@
           tip.innerHTML = near ? `<b>${W.tr(near)}</b>` : `<b>${W.tr(NAMES[L.kind])}</b>`;
         } else tip.hidden = true;
       }
+      // the key follows whatever layer is under the pointer, or in the middle of the view
+      const probe = hover ? c + (hover.y - o.h / 2) / pxm : c;
+      const PL = layers.find((l) => probe >= l.a && probe < l.b);
+      const kind = PL ? PL.kind : '';
+      if (kind !== lastKind) { lastKind = kind; keyItems.forEach((li) => li.classList.toggle('on', li.dataset.kind === kind)); }
       const fov = z >= 10 ? W.nf(z) + ' m' : z >= 1 ? W.nf(z, 1) + ' m' : W.nf(z * 100) + ' cm';
       scaleEl.textContent = (W.lang === 'ro' ? 'Câmp vizual: ' : 'Field of view: ') + fov;
     }

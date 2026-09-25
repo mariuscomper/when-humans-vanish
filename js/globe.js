@@ -5,7 +5,12 @@
   const landP = Promise.all([W.load('land-110m.json'), W.load('cities.json')]).then(([topo, c]) => {
     const land = topojson.feature(topo, topo.objects.land);
     const cities = [];
-    for (let i = 0; i < c.length; i += 3) cities.push({ lon: c[i] / 10, lat: c[i + 1] / 10, pop: c[i + 2] });
+    const R = Math.PI / 180;
+    for (let i = 0; i < c.length; i += 3) {
+      const lon = c[i] / 10, lat = c[i + 1] / 10;
+      // unit vector, so "is it on the visible side?" is one dot product per frame
+      cities.push({ lon, lat, pop: c[i + 2], vx: Math.cos(lat * R) * Math.cos(lon * R), vy: Math.cos(lat * R) * Math.sin(lon * R), vz: Math.sin(lat * R) });
+    }
     cities.sort((a, b) => b.pop - a.pop);
     return { land, cities };
   });
@@ -85,12 +90,13 @@
       const level = 1 - 0.35 * W.smooth(0.0004, 0.0014, t);
       const spr = W.glow('rgba(255,170,70,0.9)', 48, 0.12);
       const scale = r / 380;
+      const RAD = Math.PI / 180;
+      const cx0 = Math.cos(center[1] * RAD) * Math.cos(center[0] * RAD), cy0 = Math.cos(center[1] * RAD) * Math.sin(center[0] * RAD), cz0 = Math.sin(center[1] * RAD);
       ctx.globalCompositeOperation = 'lighter';
       for (const c of D.cities) {
-        const dd = d3.geoDistance([c.lon, c.lat], center);
-        if (dd > 1.52) continue;
+        const limb = c.vx * cx0 + c.vy * cy0 + c.vz * cz0; // cosine of the angle from the centre of the view
+        if (limb < 0.05) continue;
         const p = proj([c.lon, c.lat]);
-        const limb = Math.cos(dd);
         const s = (2.2 + Math.sqrt(c.pop) * 0.42) * scale * (0.55 + 0.45 * limb);
         ctx.globalAlpha = Math.min(1, 0.35 + c.pop / 3000) * level * (0.3 + 0.7 * limb);
         ctx.drawImage(spr, p[0] - s, p[1] - s, s * 2, s * 2);
@@ -104,9 +110,7 @@
         const pos = pl.interp(pl.k);
         if (d3.geoDistance(pos, center) > 1.5) continue;
         const a = proj(pos), b = proj(pl.interp(Math.max(0, pl.k - 0.03)));
-        const g = ctx.createLinearGradient(b[0], b[1], a[0], a[1]);
-        g.addColorStop(0, 'rgba(236,230,214,0)'); g.addColorStop(1, `rgba(236,230,214,${0.55 * alive})`);
-        ctx.strokeStyle = g; ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(236,230,214,${0.28 * alive})`; ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(b[0], b[1]); ctx.lineTo(a[0], a[1]); ctx.stroke();
         ctx.fillStyle = `rgba(255,255,255,${0.9 * alive})`;
         ctx.fillRect(a[0] - 1, a[1] - 1, 2, 2);
@@ -169,10 +173,11 @@
       return { type: 'Feature', geometry: { type: 'Polygon', coordinates: [ring] } };
     }
 
-    // Monotonic in time so scrolling never pumps the ice back and forth:
-    // it builds to a full glacial maximum, then eases back toward an interglacial.
+    // A scenario, not a date: the ice starts somewhere past 50,000 years (later, the more carbon
+    // we left), reaches the size of the last glacial maximum, then eases back toward a warm spell.
+    // Monotonic in time so scrolling never pumps it back and forth.
     function iceAmount(t) {
-      return W.smooth(22e3, 62e3, t) * (1 - 0.65 * W.smooth(2e5, 9e5, t));
+      return W.smooth(50e3, 95e3, t) * (1 - 0.65 * W.smooth(3e5, 9e5, t));
     }
 
     function render({ t, dt }) {

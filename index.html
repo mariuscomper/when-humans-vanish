@@ -1,17 +1,43 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>When Humans Vanish</title>
-<meta name="description" content="Tomorrow morning, nobody wakes up. A scrolling journey through what happens to Earth in the hours, years and millions of years after humans disappear.">
+<title>When Humans Vanish: What Would Happen If Humans Disappeared?</title>
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
+<meta name="description" content="An interactive, evidence-based timeline of Earth after humans disappear: the first hours as the grids fail, the centuries as cities turn to forest, and the millions of years that follow.">
+<link rel="canonical" href="https://mariuscomper.uk/when-humans-vanish/">
+<link rel="alternate" hreflang="en" href="https://mariuscomper.uk/when-humans-vanish/">
+<link rel="alternate" hreflang="ro" href="https://mariuscomper.uk/when-humans-vanish/ro/">
+<link rel="alternate" hreflang="x-default" href="https://mariuscomper.uk/when-humans-vanish/">
 <meta name="theme-color" content="#06080d">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Marius Comper">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="ro_RO">
 <meta property="og:title" content="When Humans Vanish">
-<meta property="og:description" content="Tomorrow morning, nobody wakes up. What happens to Earth in the hours, years and millions of years after we're gone.">
+<meta property="og:description" content="Tomorrow morning, nobody wakes up. An interactive timeline of what happens to Earth in the hours, centuries and millions of years after we're gone.">
 <meta property="og:url" content="https://mariuscomper.uk/when-humans-vanish/">
 <meta property="og:image" content="https://mariuscomper.uk/when-humans-vanish/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "When Humans Vanish: What Would Happen If Humans Disappeared?",
+  "alternativeHeadline": "An Earth-without-us timeline, from the first hours to a billion years",
+  "description": "An interactive, evidence-based timeline of Earth after humans disappear: the first hours as the grids fail, the centuries as cities turn to forest, and the millions of years that follow.",
+  "inLanguage": "en",
+  "url": "https://mariuscomper.uk/when-humans-vanish/",
+  "image": "https://mariuscomper.uk/when-humans-vanish/og.png",
+  "datePublished": "2026-09-25",
+  "dateModified": "2026-09-26",
+  "author": { "@type": "Person", "name": "Marius Comper", "url": "https://mariuscomper.uk" },
+  "about": ["World without humans", "Deep time", "Rewilding", "Anthropocene"]
+}
+</script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,16 +49,16 @@
 <a class="skip" href="#lights" data-i18n="ui.skip">Skip the intro</a>
 
 <!-- ============ fixed chrome ============ -->
-<header class="chrome" aria-label="Controls">
+<header class="chrome">
   <a class="wordmark" href="#top" data-i18n="ui.wordmark">When Humans Vanish</a>
-  <div class="lang" role="group" aria-label="Language">
-    <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
-    <button type="button" id="lang-ro" data-lang="ro" aria-pressed="false">RO</button>
+  <div class="lang" role="group" aria-label="Language / Limba">
+    <a id="lang-en" data-lang="en" href="./" hreflang="en" lang="en" aria-current="true">EN</a>
+    <a id="lang-ro" data-lang="ro" href="ro/" hreflang="ro" lang="ro">RO</a>
   </div>
 </header>
 
 <aside class="gauge" aria-hidden="true">
-  <div class="gauge-readout"><span class="gauge-plus">T +</span><span id="gauge-value">0</span></div>
+  <div class="gauge-readout"><span class="gauge-plus">T +</span><span id="gauge-value"></span></div>
   <div class="gauge-track" id="gauge-track">
     <div class="gauge-fill" id="gauge-fill"></div>
     <div class="gauge-marker" id="gauge-marker"></div>
@@ -44,8 +70,9 @@
 <!-- ============ HERO + THE MOMENT (globe) ============ -->
 <section class="scene" data-scene="globe" data-bg="#05070c" data-align="center">
   <div class="stage">
-    <canvas class="fill"></canvas>
-    <div class="globe-caption" id="globe-caption"></div>
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="globe.alt">A slowly turning night-time Earth, lit by the lights of about 5,500 cities, with aircraft crossing it until their fuel runs out.</p>
+    <div class="globe-caption" id="globe-caption" aria-hidden="true"></div>
   </div>
   <div class="steps">
     <div class="step hero" data-t="0">
@@ -64,29 +91,31 @@
     </div>
     <div class="step" data-t="0.00003" data-side="left">
       <div class="card">
-        <p class="stamp"></p>
+        <p class="stamp" data-i18n="m2.stamp">+ a few minutes</p>
         <p data-i18n="m2.p">The machines don't notice at first. Autopilots hold their headings. Engines idle in empty cars. Traffic lights keep cycling red, amber, green for streets with nobody on them. For a few hours our world runs on momentum, like a song still playing in an empty room.</p>
       </div>
     </div>
-    <div class="step" data-t="0.0009" data-side="left">
+    <div class="step" data-t="0.0009" data-range="0.000114,0.00205" data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="m3.p">Then the fuel runs out. One by one, the airliners drain their tanks and glide down, into oceans, forests and fields. It is the last human noise many places will hear for a very long time.</p>
+        <p data-i18n="m3.p">Then the fuel runs out. One by one, over the next hours, the airliners drain their tanks and glide down, into oceans, forests and fields. It is the last human noise many places will hear for a very long time.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ I. THE LIGHTS GO OUT (world map) ============ -->
-<section class="scene" id="lights" data-scene="lights" data-bg="#06080d">
+<section class="scene" id="lights" tabindex="-1" data-scene="lights" data-bg="#06080d">
   <div class="stage">
-    <canvas class="fill"></canvas>
-    <div class="map-hud">
-      <p class="hud-label" data-i18n="lights.hud">Generating capacity online</p>
-      <p class="hud-value" id="lights-gw">0 GW</p>
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="lights.alt">World map of 16,679 large power plants, coloured by fuel. As time passes, regional grids collapse at different moments and the plants and city lights go dark, until only a few isolated hydroelectric and solar plants remain.</p>
+    <div class="map-hud" aria-hidden="true">
+      <p class="hud-label" data-i18n="lights.hud">Generating capacity still connected</p>
+      <p class="hud-value" id="lights-gw"></p>
       <p class="hud-sub" id="lights-time"></p>
     </div>
-    <div class="legend" id="lights-legend" role="group" aria-label="Power plants by fuel"></div>
+    <div class="legend" id="lights-legend" role="group" aria-label="Power plants by fuel" data-i18n-aria="aria.legend"></div>
+    <p class="map-source" data-i18n="lights.src">Data: WRI Global Power Plant Database v1.3 (2021), plants of 20 MW and above. Timings are illustrative.</p>
     <div class="tooltip" id="lights-tip" hidden></div>
   </div>
   <div class="steps">
@@ -94,37 +123,37 @@
       <div class="card chapter">
         <p class="chapter-num">I</p>
         <h2 data-i18n="lights.h">The lights go out</h2>
-        <p data-i18n="lights.p0">Every dot on this map is a power station, taken from a database of every large plant on Earth. Right now, together, they are feeding a world that is no longer using anything.</p>
+        <p data-i18n="lights.p0">Every dot is a large power plant recorded by the World Resources Institute: nearly 35,000 of them in 167 countries, a big but incomplete snapshot last updated in 2021.<sup class="ref"><a href="#src-1" aria-label="Source 1">1</a></sup> Right now they are all still running. The world they feed is empty, but it is still hungry: pumps, freezers, servers, air conditioning and factory lines hum on with nobody watching.</p>
       </div>
     </div>
     <div class="step" data-t="0.00011" data-side="left">
       <div class="card">
-        <p class="stamp"></p>
-        <p data-i18n="lights.p1">A power grid is a balancing act. The electricity made has to match the electricity used, second by second, and people steer that balance day and night. Behind them are coal trains, gas contracts and fuel deliveries. Remove the people and the act starts to wobble.</p>
+        <p class="stamp" data-i18n="lights.s1">+ the first hour</p>
+        <p data-i18n="lights.p1">A modern grid is largely automatic. Machines balance supply and demand second by second, and they can keep that up for a while. What they cannot do is order coal, clear a fallen line, answer an alarm, or restart a plant that has tripped.</p>
       </div>
     </div>
-    <div class="step" data-t="0.0007" data-side="left">
+    <div class="step" data-t="0.0007" data-range="0.000114,0.00137" data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="lights.p2">Fossil-fuel plants go first. A frequency swing, an alarm no one answers, a fuel feed that stops: their automatic safety systems trip them offline. Each failure dumps its load onto the next plant, which trips in turn.</p>
+        <p data-i18n="lights.p2">So the failures arrive one at a time. A gas supply falters. A storm brings down a line. A transformer overheats. A protection relay takes a plant offline, and nobody switches it back on. Each loss pushes the rest of the grid a little closer to the edge.</p>
       </div>
     </div>
     <div class="step" data-t="0.0027" data-side="left">
       <div class="card">
-        <p class="stamp"></p>
-        <p data-i18n="lights.p3">The failures cascade across borders and continents. Within a day or two, almost every grid on Earth has gone dark. Hover the map, or switch fuel types on and off in the key, to see what is left.</p>
+        <p class="stamp" data-i18n="lights.s3">+ hours to days</p>
+        <p data-i18n="lights.p3">Somewhere, one failure too many sets off a cascade, and a whole region goes dark in seconds. It happens at different times in different places: some grids fall within hours, others limp on for days. Hover or tap the map, or switch fuels on and off in the key, to see what is left.</p>
       </div>
     </div>
-    <div class="step" data-t="0.0082" data-side="left">
+    <div class="step" data-t="0.03" data-side="left">
       <div class="card">
-        <p class="stamp"></p>
-        <p data-i18n="lights.p4">A few holdouts remain. Some hydroelectric dams run on gravity rather than fuel, and in isolated systems their turbines can keep spinning until debris and mussels clog the intakes. A rooftop solar panel keeps charging a battery for nobody.</p>
+        <p class="stamp" data-i18n="lights.s4">+ days to weeks</p>
+        <p data-i18n="lights.p4">A few holdouts remain. A hydroelectric dam feeding a small, isolated grid could keep its turbines turning for weeks or more, until debris or mussels clog the intakes or a fault trips it for good. A rooftop solar panel keeps charging a battery for nobody.</p>
       </div>
     </div>
-    <div class="step" data-t="0.011" data-side="left">
+    <div class="step" data-t="0.08" data-side="left">
       <div class="card">
-        <p class="stamp"></p>
-        <p data-i18n="lights.p5">Seen from space, the night side of Earth is now as dark as it was in 1800. The only lights are lightning, lava, the aurora, and fires that nobody comes to put out.</p>
+        <p class="stamp" data-i18n="lights.s5">+ weeks</p>
+        <p data-i18n="lights.p5">The night side of Earth is now darker than it has been since before electric light. What glows is lightning, lava, the aurora, and fires that nobody comes to put out.</p>
       </div>
     </div>
   </div>
@@ -133,39 +162,39 @@
 <!-- ============ II. WATER IN THE TUNNELS (subway) ============ -->
 <section class="scene" data-scene="subway" data-bg="#070a0f">
   <div class="stage">
-    <svg class="fill subway-svg" id="subway-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="subway-title">
-      <title id="subway-title">Cross-section of a New York street and subway tunnel slowly filling with water</title>
-    </svg>
-    <div class="subway-hud">
+    <svg class="fill subway-svg" id="subway-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+    <p class="sr-only" data-i18n="subway.alt">Cross-section of a New York street and the subway tunnel beneath it. After the pumps stop, water rises in the tunnel; years later the rusted columns bend and the street above sags into the hole.</p>
+    <div class="subway-hud" aria-hidden="true">
       <p class="hud-label" data-i18n="subway.hud">Water the pumps did not remove</p>
-      <p class="hud-value" id="subway-litres">0 L</p>
+      <p class="hud-value" id="subway-litres"></p>
       <p class="hud-sub" id="subway-level"></p>
     </div>
   </div>
   <div class="steps">
     <div class="step" data-t="0.0011" data-side="right">
       <div class="card chapter">
+        <p class="stamp" data-i18n="subway.s0">On an ordinary day</p>
         <p class="chapter-num">II</p>
         <h2 data-i18n="subway.h">Water in the tunnels</h2>
-        <p data-i18n="subway.p0">New York has been fighting water underground for over a century. The island was once streams and marsh, and the water never really left. Every day, 753 pumps lift about 50 million litres of it out of the subway.</p>
+        <p data-i18n="subway.p0">New York has been fighting water underground for more than a century. The island was once streams and marsh, and the water never really left. On a dry day, pumps in 286 pump rooms lift about 13 million gallons, some 50 million litres, out of the subway.<sup class="ref"><a href="#src-2" aria-label="Source 2">2</a></sup></p>
       </div>
     </div>
-    <div class="step" data-t="0.0027" data-side="right">
+    <div class="step" data-t="0.0041" data-approx data-side="right">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="subway.p1">When the power fails, the pumps stop. Water collects at the lowest points first, in the tunnels that run beneath the rivers. Within about 36 hours, parts of the network are flooded.</p>
+        <p data-i18n="subway.p1">When the power fails, the pumps stop. Water collects at the lowest points first, in the tunnels beneath the rivers. One of the engineers who kept the system dry put it to the writer Alan Weisman plainly: “Within 36 hours, the whole thing could fill.”<sup class="ref"><a href="#src-3" aria-label="Source 3">3</a></sup></p>
       </div>
     </div>
     <div class="step" data-t="0.1" data-side="right">
       <div class="card">
-        <p class="stamp"></p>
+        <p class="stamp" data-i18n="subway.s2">+ months to years</p>
         <p data-i18n="subway.p2">Now the water starts its slow work. The steel columns that hold up the streets stand in it, and begin to rust. London, Paris and Tokyo face the same patient flood beneath their pavements.</p>
       </div>
     </div>
-    <div class="step" data-t="20" data-side="right">
+    <div class="step" data-t="20" data-approx data-side="right">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="subway.p3">Within a couple of decades, the columns give way. Avenues cave in above the tunnels, and streets built along forgotten streams become streams again.</p>
+        <p data-i18n="subway.p3">Within a couple of decades, the columns could give way. Avenues would cave in above the tunnels, and streets built over forgotten streams would become streams again.</p>
       </div>
     </div>
   </div>
@@ -174,59 +203,162 @@
 <!-- ============ III. THE ANIMALS NOTICE (specimen cards) ============ -->
 <section class="flow" id="animals" data-bg="#0a0d0b">
   <div class="flow-head" data-t="0.05">
+    <p class="stamp" data-i18n="animals.s">+ days to decades</p>
     <p class="chapter-num">III</p>
     <h2 data-i18n="animals.h">The animals notice</h2>
     <p class="flow-lede" data-i18n="animals.p">We share the planet with roughly 25 billion chickens, 1.5 billion cattle, and nearly a billion dogs, most of them shaped by us, for us. Some will follow us out. Others have been waiting.</p>
   </div>
-  <div class="filters" role="group" aria-label="Filter species">
+  <div class="filters" role="group" aria-label="Filter species" data-i18n-aria="aria.filters">
     <button type="button" class="chip" id="f-all" data-filter="all" aria-pressed="true" data-i18n="animals.all">All</button>
     <button type="button" class="chip" id="f-thrive" data-filter="thrive" aria-pressed="false" data-i18n="animals.thrive">Thrives</button>
     <button type="button" class="chip" id="f-adapt" data-filter="adapt" aria-pressed="false" data-i18n="animals.adapt">Adapts</button>
     <button type="button" class="chip" id="f-gone" data-filter="gone" aria-pressed="false" data-i18n="animals.gone">Vanishes</button>
   </div>
-  <div class="specimens" id="specimens"></div>
+  <div class="specimens" id="specimens">
+    <article class="specimen" data-v="gone">
+      <div class="sp-top"><h3 data-i18n="sp1.n">Head louse</h3><span class="sp-no">No. 001</span></div>
+      <p class="latin">Pediculus humanus capitis</p>
+      <p class="stat" data-i18n="sp1.s">Host: humans only</p>
+      <p class="desc" data-i18n="sp1.d">It lives on human scalps and nowhere else. When we go, it goes, along with our body lice and a few gut worms that have never known another home.</p>
+      <span class="verdict gone" data-i18n="v.gone">✕ Vanishes</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp2.n">Dog</h3><span class="sp-no">No. 002</span></div>
+      <p class="latin">Canis familiaris</p>
+      <p class="stat" data-i18n="sp2.s">≈ 900 million alive</p>
+      <p class="desc" data-i18n="sp2.d">Most dogs on Earth already roam free. The toy breeds don’t last. After a few generations the survivors converge on one look: medium-sized, tan, prick-eared, curly-tailed, the classic village dog.</p>
+      <span class="verdict adapt" data-i18n="v.adapt">◆ Adapts</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp3.n">House cat</h3><span class="sp-no">No. 003</span></div>
+      <p class="latin">Felis catus</p>
+      <p class="stat" data-i18n="sp3.s">Never fully domesticated</p>
+      <p class="desc" data-i18n="sp3.d">An efficient, independent hunter that only half signed up to living with us. It does just fine. Songbirds pay the price.</p>
+      <span class="verdict thrive" data-i18n="v.thrive">▲ Thrives</span>
+    </article>
+    <article class="specimen" data-v="gone">
+      <div class="sp-top"><h3 data-i18n="sp4.n">Chicken</h3><span class="sp-no">No. 004</span></div>
+      <p class="latin">Gallus gallus domesticus</p>
+      <p class="stat" data-i18n="sp4.s">≈ 25 billion alive</p>
+      <p class="desc" data-i18n="sp4.d">Together they weigh more than twice as much as all wild birds.<sup class="ref"><a href="#src-4" aria-label="Source 4">4</a></sup> Most live indoors and die within days when feed and ventilation stop. A few village flocks in warm places go feral, like their jungle ancestors.</p>
+      <span class="verdict gone" data-i18n="v.gone">✕ Vanishes</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp5.n">Cattle</h3><span class="sp-no">No. 005</span></div>
+      <p class="latin">Bos taurus</p>
+      <p class="stat" data-i18n="sp5.s">≈ 1.5 billion head</p>
+      <p class="desc" data-i18n="sp5.d">Dairy cows, bred to be milked, suffer first. Hardy breeds go wild in herds and become prey for wolves again, as the aurochs once were.</p>
+      <span class="verdict adapt" data-i18n="v.adapt">◆ Adapts</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp6.n">Sheep</h3><span class="sp-no">No. 006</span></div>
+      <p class="latin">Ovis aries</p>
+      <p class="stat" data-i18n="sp6.s">Wool never stops growing</p>
+      <p class="desc" data-i18n="sp6.d">Most breeds depend on shearing. In 2004 a runaway merino called Shrek was found in New Zealand after six years in hiding, carrying 27 kg of fleece.</p>
+      <span class="verdict adapt" data-i18n="v.adapt">◆ Adapts</span>
+    </article>
+    <article class="specimen" data-v="gone">
+      <div class="sp-top"><h3 data-i18n="sp7.n">German cockroach</h3><span class="sp-no">No. 007</span></div>
+      <p class="latin">Blattella germanica</p>
+      <p class="stat" data-i18n="sp7.s">Tropical by origin</p>
+      <p class="desc" data-i18n="sp7.d">It conquered the cold north by living inside our heated buildings. The first winter without heating wipes it out across the colder half of the world.</p>
+      <span class="verdict gone" data-i18n="v.gone">✕ Vanishes</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp8.n">Brown rat</h3><span class="sp-no">No. 008</span></div>
+      <p class="latin">Rattus norvegicus</p>
+      <p class="stat" data-i18n="sp8.s">Lives on our garbage</p>
+      <p class="desc" data-i18n="sp8.d">The bins stop filling. Numbers crash, then settle, as rats become ordinary prey again for owls, foxes and hawks moving into the city.</p>
+      <span class="verdict adapt" data-i18n="v.adapt">◆ Adapts</span>
+    </article>
+    <article class="specimen" data-v="gone">
+      <div class="sp-top"><h3 data-i18n="sp9.n">Bread wheat</h3><span class="sp-no">No. 009</span></div>
+      <p class="latin">Triticum aestivum</p>
+      <p class="stat" data-i18n="sp9.s">≈ 220 million hectares</p>
+      <p class="desc" data-i18n="sp9.d">We bred its ears to hold on to their grain until harvest, so it can barely sow itself. After a few seasons without ploughing, it loses to the weeds.</p>
+      <span class="verdict gone" data-i18n="v.gone">✕ Vanishes</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp10.n">Grey wolf</h3><span class="sp-no">No. 010</span></div>
+      <p class="latin">Canis lupus</p>
+      <p class="stat" data-i18n="sp10.s">Already returning to Europe</p>
+      <p class="desc" data-i18n="sp10.d">With hunting over and deer, boar and feral cattle everywhere, wolves spread across whole continents within decades.</p>
+      <span class="verdict thrive" data-i18n="v.thrive">▲ Thrives</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp11.n">Atlantic cod</h3><span class="sp-no">No. 011</span></div>
+      <p class="latin">Gadus morhua</p>
+      <p class="stat" data-i18n="sp11.s">≈ 90 million t of wild fish caught a year</p>
+      <p class="desc" data-i18n="sp11.d">The nets come up empty for the last time. Many fish stocks rebuild within decades, and the great shoals of the North Atlantic may fill the sea again.</p>
+      <span class="verdict thrive" data-i18n="v.thrive">▲ Thrives</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp12.n">Migrating songbirds</h3><span class="sp-no">No. 012</span></div>
+      <p class="latin">Passeriformes</p>
+      <p class="stat" data-i18n="sp12.s">Up to 1 billion window deaths a year, US alone<sup class="ref"><a href="#src-5" aria-label="Source 5">5</a></sup></p>
+      <p class="desc" data-i18n="sp12.d">Most migrate at night, and our lit windows lure them into glass. With the lights out, the night migration flies safely again.</p>
+      <span class="verdict thrive" data-i18n="v.thrive">▲ Thrives</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp13.n">Honeybee</h3><span class="sp-no">No. 013</span></div>
+      <p class="latin">Apis mellifera</p>
+      <p class="stat" data-i18n="sp13.s">≈ 100 million managed hives</p>
+      <p class="desc" data-i18n="sp13.d">Without beekeepers, many hives fall to parasitic mites. But thousands of wild bee species boom as the pesticides break down and meadows return.</p>
+      <span class="verdict adapt" data-i18n="v.adapt">◆ Adapts</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp14.n">African elephant</h3><span class="sp-no">No. 014</span></div>
+      <p class="latin">Loxodonta africana</p>
+      <p class="stat" data-i18n="sp14.s">≈ 415,000 left (2016 estimate)</p>
+      <p class="desc" data-i18n="sp14.d">No more poaching, and farmland turning back into savanna and forest. They breed slowly, so reclaiming their old range takes a few centuries.</p>
+      <span class="verdict thrive" data-i18n="v.thrive">▲ Thrives</span>
+    </article>
+  </div>
 </section>
 
 <!-- ============ IV. THE COOLING POOLS (nuclear) ============ -->
 <section class="scene" data-scene="nuclear" data-bg="#0a0709">
   <div class="stage">
-    <canvas class="fill"></canvas>
-    <div class="map-hud">
-      <p class="hud-label" id="nuke-time-label" data-i18n="nuke.hud">Nuclear sites, since the blackout</p>
-      <p class="hud-value" id="nuke-time">+0</p>
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="nuke.alt">World map of nuclear power sites. All run on backup diesel at first. Most then warm slowly and stay quiet; an illustrative minority holding freshly unloaded fuel turn red as their pools could boil down.</p>
+    <div class="map-hud" aria-hidden="true">
+      <p class="hud-label" data-i18n="nuke.hud">Nuclear sites, since the blackout</p>
+      <p class="hud-value" id="nuke-time"></p>
       <ul class="nuke-stats" id="nuke-stats"></ul>
     </div>
+    <p class="map-source" data-i18n="nuke.src">Which sites fall into which group depends on fuel age, design and backup systems. The split shown is illustrative.</p>
   </div>
   <div class="steps">
     <div class="step" data-t="0.0027" data-side="left">
       <div class="card chapter">
+        <p class="stamp" data-i18n="nuke.s0">+ seconds</p>
         <p class="chapter-num">IV</p>
         <h2 data-i18n="nuke.h">The cooling pools</h2>
         <p data-i18n="nuke.p0">There are more than 400 nuclear reactors in the world. When the grid collapses they do exactly what they were designed to do. Control rods drop, and within seconds the chain reaction stops.</p>
       </div>
     </div>
-    <div class="step" data-t="0.019" data-side="left">
+    <div class="step" data-t="0.019" data-approx data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="nuke.p1">The fuel keeps making heat anyway. Beside each reactor, in deep pools, sit years of spent fuel rods that must be kept under circulating water. Backup diesel generators take over the pumps. Their tanks typically hold enough for about a week.</p>
+        <p data-i18n="nuke.p1">The fuel keeps making heat anyway. Beside each reactor, in deep pools, sit years of spent fuel rods that are kept under circulating water. Backup diesel generators take over the pumps. Their tanks are typically sized to run for about a week.</p>
       </div>
     </div>
     <div class="step" data-t="0.08" data-side="left">
       <div class="card">
-        <p class="stamp"></p>
-        <p data-i18n="nuke.p2">Then the diesel runs dry. The pools warm, and then boil. Over weeks the water level falls, and once the rods are exposed their zirconium casings can catch fire, releasing radioactive smoke into the wind.</p>
+        <p class="stamp" data-i18n="nuke.s2">+ weeks to months</p>
+        <p data-i18n="nuke.p2">What happens next depends on how fresh the fuel is. Rods that left the reactor years ago have cooled so much that air alone could keep them safe.<sup class="ref"><a href="#src-6" aria-label="Source 6">6</a></sup> Rods unloaded in the last months are another matter. Without pumps, their pool could slowly boil down, and if the fuel is uncovered, its zirconium casing could catch fire.</p>
       </div>
     </div>
-    <div class="step" data-t="0.4" data-side="left">
+    <div class="step" data-t="0.4" data-tag="scenario" data-side="left">
       <div class="card">
-        <p class="stamp"></p>
-        <p data-i18n="nuke.p3">Plumes drift east on the prevailing winds. Around a few hundred sites, including Romania's two reactors at Cernavodă beside the Danube, patches of contaminated land settle, much like the one around Chernobyl.</p>
+        <p class="stamp" data-i18n="nuke.s3">+ months</p>
+        <p data-i18n="nuke.p3">So the map does not turn uniformly red. Many sites simply go quiet. A minority, those holding hot, freshly unloaded fuel, could become serious accidents with nobody there to stop them. At Romania's Cernavodă, fuel cools in pools for six to ten years and then moves into concrete dry-storage modules that need no electricity at all.<sup class="ref"><a href="#src-7" aria-label="Source 7">7</a></sup></p>
       </div>
     </div>
     <div class="step" data-t="1" data-side="left">
       <div class="card">
-        <p class="stamp"></p>
-        <p data-i18n="nuke.p4">And yet Chernobyl also shows what comes next. Within three decades of the evacuation, its exclusion zone was full of wolves, elk, boar, lynx and bison. For most wild animals, radiation turned out to be far less dangerous than people.</p>
+        <p class="stamp" data-i18n="nuke.s4">Chornobyl, since 1986</p>
+        <p data-i18n="nuke.p4">Where it does go wrong, Chornobyl hints at what follows. Within three decades of the evacuation, its exclusion zone was full of elk, boar, lynx, bison and wolves. The radiation is still written into those wolves' blood and immune systems.<sup class="ref"><a href="#src-8" aria-label="Source 8">8</a></sup> Our absence simply mattered more.</p>
       </div>
     </div>
   </div>
@@ -235,7 +367,8 @@
 <!-- ============ V. THE SKY CLEARS (night sky) ============ -->
 <section class="scene" data-scene="sky" data-bg="#04060b">
   <div class="stage">
-    <canvas class="fill"></canvas>
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="sky.alt">A night sky over a city skyline. As the orange glow of streetlights fades, thousands of stars and the band of the Milky Way appear. A slider compares light pollution levels on the Bortle scale.</p>
     <div class="sky-control">
       <label for="bortle" class="hud-label" data-i18n="sky.slider">Light pollution</label>
       <input type="range" id="bortle" min="1" max="9" step="0.01" value="9">
@@ -245,21 +378,22 @@
   <div class="steps">
     <div class="step" data-t="0.02" data-side="right">
       <div class="card chapter">
+        <p class="stamp" data-i18n="sky.s0">+ days to weeks</p>
         <p class="chapter-num">V</p>
         <h2 data-i18n="sky.h">The sky clears</h2>
-        <p data-i18n="sky.p0">Within days, the last contrails dissolve. Within weeks, rain rinses the soot and the sulphate haze out of the air. Skies over Delhi, Beijing and Bucharest turn a blue nobody alive has seen there.</p>
+        <p data-i18n="sky.p0">Within days, the last contrails dissolve. Within weeks, rain rinses the soot and sulphate haze out of the air, and horizons move back. In the spring of 2020, when the world briefly slowed down, people in Punjab saw the Himalayas from their rooftops for the first time in decades. This time the mountains stay.</p>
       </div>
     </div>
-    <div class="step" data-t="0.3" data-side="right">
+    <div class="step" data-t="0.05" data-side="right">
       <div class="card">
-        <p class="stamp"></p>
-        <p data-i18n="sky.p1">There is a cruel twist. That haze was shading us, reflecting sunlight back to space. With it gone, the planet warms by a few tenths of a degree within a few years, a hidden bill arriving all at once.</p>
+        <p class="stamp" data-i18n="sky.s1">+ weeks</p>
+        <p data-i18n="sky.p1">And the night comes back. Today more than a third of humanity cannot see the Milky Way from home.<sup class="ref"><a href="#src-9" aria-label="Source 9">9</a></sup> Now it rises again over every city on Earth, for no one. Drag the slider to compare.</p>
       </div>
     </div>
-    <div class="step" data-t="1" data-side="right">
+    <div class="step" data-t="10" data-approx data-side="right">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="sky.p2">And the night comes back. Today more than a third of humanity cannot see the Milky Way from home. Now it rises again over every city on Earth, for no one. Drag the slider to compare.</p>
+        <p data-i18n="sky.p2">There is a cruel twist. That haze was shading us, bouncing sunlight back to space. With it gone, the planet warms by a few more tenths of a degree over roughly a decade,<sup class="ref"><a href="#src-10" aria-label="Source 10">10</a></sup> a hidden bill that falls due once nobody is left to pay it.</p>
       </div>
     </div>
   </div>
@@ -268,54 +402,56 @@
 <!-- ============ VI. THE FOREST MOVES IN (city) ============ -->
 <section class="scene" data-scene="city" data-bg="#070b0a">
   <div class="stage">
-    <canvas class="fill"></canvas>
-    <div class="city-year" aria-hidden="true"><span data-i18n="city.year">Year</span> <b id="city-year">1</b></div>
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="city.alt">An illustrated city street seen over a thousand years: weeds, then broken windows and vines, fires in the wooden houses, rusting cars and leaning towers, a fallen bridge, and finally forested hills with one stone church still standing.</p>
+    <div class="city-year" aria-hidden="true"><span data-i18n="city.year">Year</span> <b id="city-year"></b></div>
   </div>
   <div class="steps">
-    <div class="step" data-t="1" data-side="left">
+    <div class="step" data-t="1" data-approx data-side="left">
       <div class="card chapter">
+        <p class="stamp"></p>
         <p class="chapter-num">VI</p>
         <h2 data-i18n="city.h">The forest moves in</h2>
         <p data-i18n="city.p0">In the first spring, weeds find the cracks in the pavement. Every crack is a seedbed, and for the first time, nobody comes to pull out what grows there. In cold cities, the first winter freezes the water in the pipes, and the pipes split.</p>
       </div>
     </div>
-    <div class="step" data-t="4" data-side="left">
+    <div class="step" data-t="4" data-range="1,5" data-side="left">
       <div class="card">
         <p class="stamp"></p>
         <p data-i18n="city.p1">Freeze and thaw is a city's oldest enemy. Water seeps into a crack, freezes, grows by nine percent and pries the crack wider. Roofs begin to leak. Once rain gets inside a building, the countdown has started.</p>
       </div>
     </div>
-    <div class="step" data-t="12" data-side="left">
+    <div class="step" data-t="12" data-range="10,20" data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="city.p2">Lightning hits a dry roof, and there is no fire brigade. Fires run through the wooden neighbourhoods, fed by a decade of dead leaves in the gutters. Their ash enriches the soil. The first trees are now taller than the lamp posts.</p>
+        <p data-i18n="city.p2">Lightning hits a dry roof, and there is no fire brigade. Fires run through the wooden neighbourhoods, fed by years of dead leaves in the gutters. Their ash enriches the soil. The first trees are now taller than the lamp posts.</p>
       </div>
     </div>
-    <div class="step" data-t="30" data-side="left">
+    <div class="step" data-t="30" data-range="20,50" data-side="left">
       <div class="card">
         <p class="stamp"></p>
         <p data-i18n="city.p3">Inside the concrete, the steel reinforcing bars rust. Rust takes up several times more room than steel, so the bars burst the concrete from the inside. Balconies drop. Facades peel away in slabs.</p>
       </div>
     </div>
-    <div class="step" data-t="60" data-side="left">
+    <div class="step" data-t="60" data-range="50,100" data-side="left">
       <div class="card">
         <p class="stamp"></p>
         <p data-i18n="city.p4">Most wooden houses have collapsed by now. The suburbs go first, because our homes were never built to last without us. Brick chimneys stay standing among the trees, like bookmarks.</p>
       </div>
     </div>
-    <div class="step" data-t="150" data-side="left">
+    <div class="step" data-t="150" data-range="100,300" data-side="left">
       <div class="card">
         <p class="stamp"></p>
         <p data-i18n="city.p5">With their windows gone and rain pouring in, steel-framed towers start to buckle. Some fall. Others stand as hollow cliffs where peregrine falcons nest, as they already do today. The streets below are a forest.</p>
       </div>
     </div>
-    <div class="step" data-t="300" data-side="left">
+    <div class="step" data-t="300" data-range="200,500" data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="city.p6">The great suspension bridges, unpainted for three centuries, drop into the rivers they once crossed. In Panama, the canal has long since silted up, and the two Americas are joined again.</p>
+        <p data-i18n="city.p6">The great suspension bridges, unpainted for centuries, drop into the rivers they once crossed. In Panama, the canal has long since silted up, and the two Americas are joined again.</p>
       </div>
     </div>
-    <div class="step" data-t="1000" data-side="left">
+    <div class="step" data-t="1000" data-approx data-side="left">
       <div class="card">
         <p class="stamp"></p>
         <p data-i18n="city.p7">After a thousand years, a city is a cluster of wooded hills, oddly straight-edged, with rubble under the moss. Only what was made of stone, glass and very thick concrete still shows through.</p>
@@ -327,11 +463,12 @@
 <!-- ============ VII. CLOSER TO HOME: ROMANIA ============ -->
 <section class="scene" data-scene="romania" data-bg="#080b0a">
   <div class="stage">
-    <canvas class="fill ro-forest"></canvas>
-    <svg class="fill ro-svg" id="ro-svg" role="img" aria-labelledby="ro-title"><title id="ro-title">Map of Romania with places that change after humans vanish</title></svg>
-    <div class="map-hud ro-hud">
-      <p class="hud-label" data-i18n="ro.hud">Forest cover in Romania</p>
-      <p class="hud-value" id="ro-forest">29%</p>
+    <canvas class="fill ro-forest" aria-hidden="true"></canvas>
+    <svg class="fill ro-svg" id="ro-svg" role="group" aria-label="Map of Romania. Markers jump to each place's story." data-i18n-aria="aria.romap"></svg>
+    <p class="sr-only" data-i18n="ro.alt">Map of Romania and its neighbours. Forest cover spreads outward from the Carpathians, the south-eastern plains turn back to steppe, and reed beds grow in the Danube Delta.</p>
+    <div class="map-hud ro-hud" aria-hidden="true">
+      <p class="hud-label" data-i18n="ro.hud">Forest cover in Romania (illustrative)</p>
+      <p class="hud-value" id="ro-forest"></p>
     </div>
   </div>
   <div class="steps">
@@ -342,53 +479,53 @@
         <p data-i18n="ro.p0">Romania is a good place to watch the world heal. It already has some of Europe's wildest mountains, one of its great river deltas, and a glimpse, just across the border, of what happens when people leave. Tap a marker, or keep scrolling.</p>
       </div>
     </div>
-    <div class="step" data-t="10" data-side="right" data-marker="carpathians">
+    <div class="step" data-t="6" data-side="right" data-marker="chernobyl">
+      <div class="card">
+        <p class="stamp" data-i18n="ro.chern.s">Since 1986</p>
+        <h3 data-i18n="ro.chern.h">Chornobyl, the rehearsal</h3>
+        <p data-i18n="ro.chern.p">The exclusion zone straddles Ukraine and Belarus: more than 4,000 square kilometres almost empty of people for four decades. In its Belarusian half, researchers counting animals found elk, deer and boar as common as in nature reserves, and wolves more than seven times as numerous.<sup class="ref"><a href="#src-11" aria-label="Source 11">11</a></sup> It is the closest thing we have to a preview of this story.</p>
+      </div>
+    </div>
+    <div class="step" data-t="10" data-range="10,50" data-side="right" data-marker="carpathians">
       <div class="card">
         <p class="stamp"></p>
         <h3 data-i18n="ro.carp.h">The Carpathians</h3>
-        <p data-i18n="ro.carp.p">Romania holds Europe's largest brown bear population outside Russia, around 8,000 animals, along with wolves and lynx. With the guns silent and the orchards of abandoned villages dropping fruit, the bears move downhill. They already visit the edges of Brașov. Within decades, its streets belong to them.</p>
+        <p data-i18n="ro.carp.p">A genetic survey of some 24,000 samples put Romania's brown bears at between about 10,650 and 12,800 in 2025, Europe's largest population outside Russia.<sup class="ref"><a href="#src-12" aria-label="Source 12">12</a></sup> Wolves and lynx share the forest with them. With the guns silent and the orchards of abandoned villages dropping fruit, the bears move downhill. They already visit the edges of Brașov. Within decades, its streets belong to them.</p>
       </div>
     </div>
-    <div class="step" data-t="15" data-side="right" data-marker="transfagarasan">
+    <div class="step" data-t="20" data-range="5,100" data-side="right" data-marker="transfagarasan">
       <div class="card">
         <p class="stamp"></p>
         <h3 data-i18n="ro.transf.h">Transfăgărășan</h3>
         <p data-i18n="ro.transf.p">Nobody clears the road in spring. Within a few winters, rockfalls and avalanches cut it. Within a century, the most famous hairpins in Europe are a faint zig-zag of young forest on the mountainside.</p>
       </div>
     </div>
-    <div class="step" data-t="25" data-side="right" data-marker="delta">
+    <div class="step" data-t="30" data-range="20,50" data-side="right" data-marker="delta">
       <div class="card">
         <p class="stamp"></p>
         <h3 data-i18n="ro.delta.h">The Danube Delta</h3>
-        <p data-i18n="ro.delta.p">In the 1960s to 80s, dykes turned large parts of the delta into farms and fish ponds. Unmaintained, those dykes fail one flood at a time, and the river takes its marshes back. Europe's largest reed beds spread, and pelicans, among more than 300 bird species, come back to nest in them.</p>
+        <p data-i18n="ro.delta.p">From the 1960s to the 80s, dykes turned large parts of the delta into farms and fish ponds. Unmaintained, those dykes fail one flood at a time, and the river takes its marshes back. Europe's largest reed beds spread, and pelicans, among more than 300 bird species, return to nest in them.</p>
       </div>
     </div>
-    <div class="step" data-t="40" data-side="right" data-marker="irongates">
-      <div class="card">
-        <p class="stamp"></p>
-        <h3 data-i18n="ro.iron.h">The Iron Gates</h3>
-        <p data-i18n="ro.iron.p">The Porțile de Fier dam, one of Europe's largest hydropower plants, may keep a few lights burning longer than almost anywhere in the Balkans. The dam itself should stand for centuries, while its lake slowly fills with the silt of half a continent.</p>
-      </div>
-    </div>
-    <div class="step" data-t="70" data-side="right" data-marker="baragan">
+    <div class="step" data-t="50" data-range="20,100" data-side="right" data-marker="baragan">
       <div class="card">
         <p class="stamp"></p>
         <h3 data-i18n="ro.baragan.h">The Bărăgan</h3>
-        <p data-i18n="ro.baragan.p">Not everything turns into forest. The plains of the south-east were steppe long before the plough, and they go back to grass. Wild horses from abandoned farms graze where the wheat was.</p>
+        <p data-i18n="ro.baragan.p">Not everything turns into forest. The plains of the south-east were steppe long before the plough, and they go back to grass. Horses from abandoned farms, gone wild, graze where the wheat was.</p>
       </div>
     </div>
-    <div class="step" data-t="200" data-side="right" data-marker="bucharest">
+    <div class="step" data-t="150" data-range="100,500" data-side="right" data-marker="irongates">
+      <div class="card">
+        <p class="stamp"></p>
+        <h3 data-i18n="ro.iron.h">The Iron Gates</h3>
+        <p data-i18n="ro.iron.p">The Porțile de Fier dam, one of Europe's largest hydropower plants, might keep a few lights burning longer than almost anywhere in the Balkans. The dam itself should stand for centuries, while its lake slowly fills with the silt of half a continent.</p>
+      </div>
+    </div>
+    <div class="step" data-t="1000" data-approx data-side="right" data-marker="bucharest">
       <div class="card">
         <p class="stamp"></p>
         <h3 data-i18n="ro.buc.h">Bucharest</h3>
-        <p data-i18n="ro.buc.p">The Palace of the Parliament weighs around four million tonnes, one of the heaviest buildings on Earth. Long after the apartment blocks around it have fallen, it will still be there. In a thousand years it will be a great wooded hill in the middle of a forest, with marble underneath.</p>
-      </div>
-    </div>
-    <div class="step" data-t="400" data-side="right" data-marker="chernobyl">
-      <div class="card">
-        <p class="stamp"></p>
-        <h3 data-i18n="ro.chern.h">Chernobyl, the rehearsal</h3>
-        <p data-i18n="ro.chern.p">Some 2,600 square kilometres of Ukraine have been almost empty of people since 1986. Scientists counting animals there found wolf numbers up to seven times higher than in nearby nature reserves. It is the closest thing we have to a preview of this story.</p>
+        <p data-i18n="ro.buc.p">The Palace of the Parliament weighs around four million tonnes, one of the heaviest buildings on Earth. Long after the apartment blocks around it have fallen, it will still be there. After a thousand years it is a great wooded hill in the middle of a forest, with marble underneath.</p>
       </div>
     </div>
   </div>
@@ -399,50 +536,81 @@
   <div class="flow-head" data-t="500">
     <p class="chapter-num">VIII</p>
     <h2 data-i18n="lasts.h">What lasts</h2>
-    <p class="flow-lede" data-i18n="lasts.p">Everything we make is slowly returning to the ground. Some of it just takes much longer. Drag the slider to travel forward in time and see what is still standing. The bars show the rough range of estimates, because nobody has been able to check.</p>
+    <p class="flow-lede" data-i18n="lasts.p">Everything we make is slowly returning to the ground. Some of it just takes much longer. Drag the slider to travel forward in time and see what is still standing. The bars show the rough spread of estimates, because nobody has been able to check.</p>
   </div>
   <div class="lasts-control">
     <label for="lasts-year" class="hud-label" data-i18n="lasts.slider">Years after us</label>
     <output id="lasts-out" for="lasts-year">1,000</output>
     <input type="range" id="lasts-year" min="0" max="9" step="0.01" value="3">
   </div>
-  <div class="lasts-chart" id="lasts-chart"></div>
+  <div class="lasts-chart" id="lasts-chart" aria-hidden="true"></div>
   <p class="lasts-summary" id="lasts-summary" aria-live="polite"></p>
+  <details class="lasts-table">
+    <summary data-i18n="lasts.table">Show the estimates as a table</summary>
+    <div class="table-wrap">
+      <table id="lasts-data">
+        <thead><tr><th scope="col" data-i18n="lasts.c1">Thing</th><th scope="col" data-i18n="lasts.c2">Rough lifespan</th><th scope="col" data-i18n="lasts.c3">Why</th></tr></thead>
+        <tbody>
+        <tr data-min="5" data-max="60"><th scope="row" data-i18n="lt1.n">Books in an abandoned library</th><td class="num" data-i18n="lt1.r">5–60 years</td><td data-i18n="lt1.x">Roofs leak, mould and insects do the rest.</td></tr>
+        <tr data-min="20" data-max="150"><th scope="row" data-i18n="lt2.n">Asphalt roads</th><td class="num" data-i18n="lt2.r">20–150 years</td><td data-i18n="lt2.x">Split by frost and roots, then buried under soil.</td></tr>
+        <tr data-min="40" data-max="150"><th scope="row" data-i18n="lt3.n">Wooden houses</th><td class="num" data-i18n="lt3.r">40–150 years</td><td data-i18n="lt3.x">Rot, termites and fire. The suburbs go first.</td></tr>
+        <tr data-min="50" data-max="300"><th scope="row" data-i18n="lt4.n">Cars</th><td class="num" data-i18n="lt4.r">50–300 years</td><td data-i18n="lt4.x">Rusted to lumps, then to red stains in the soil.</td></tr>
+        <tr data-min="100" data-max="500"><th scope="row" data-i18n="lt5.n">Steel-frame skyscrapers</th><td class="num" data-i18n="lt5.r">100–500 years</td><td data-i18n="lt5.x">Water gets in, the steel rusts, the joints fail.</td></tr>
+        <tr data-min="100" data-max="500"><th scope="row" data-i18n="lt6.n">Aluminium cans</th><td class="num" data-i18n="lt6.r">100–500 years</td><td data-i18n="lt6.x">Slowly oxidised, faster in salty or acidic soil.</td></tr>
+        <tr data-min="150" data-max="600"><th scope="row" data-i18n="lt7.n">Suspension bridges</th><td class="num" data-i18n="lt7.r">150–600 years</td><td data-i18n="lt7.x">Unpainted cables and bolts corrode until the deck drops.</td></tr>
+        <tr data-min="400" data-max="2000"><th scope="row" data-i18n="lt8.n">Plastic bottles</th><td class="num" data-i18n="lt8.r">400–2,000 years</td><td data-i18n="lt8.x">Sunlight breaks them into ever smaller fragments that linger.</td></tr>
+        <tr data-min="1000" data-max="10000"><th scope="row" data-i18n="lt9.n">Great concrete dams</th><td class="num" data-i18n="lt9.r">1,000–10,000 years</td><td data-i18n="lt9.x">Massive enough to stand for millennia as their lakes silt up.</td></tr>
+        <tr data-min="10000" data-max="1000000"><th scope="row" data-i18n="lt10.n">Glass bottles</th><td class="num" data-i18n="lt10.r">10,000–1 million years</td><td data-i18n="lt10.x">Chemically tough. Buried, they can last almost indefinitely.</td></tr>
+        <tr data-min="24100" data-max="241000"><th scope="row" data-i18n="lt11.n">Plutonium-239</th><td class="num" data-i18n="lt11.r">24,100–241,000 years</td><td data-i18n="lt11.x">Half gone after 24,100 years, a thousandth left after ten half-lives.</td></tr>
+        <tr data-min="100000" data-max="500000"><th scope="row" data-i18n="lt12.n">The last of our extra CO₂</th><td class="num" data-i18n="lt12.r">100,000–500,000 years</td><td data-i18n="lt12.x">Removed by the weathering of rock, the slowest cleaner there is.</td></tr>
+        <tr data-min="100000" data-max="1000000"><th scope="row" data-i18n="lt13.n">The Great Pyramid</th><td class="num" data-i18n="lt13.r">100,000–1 million years</td><td data-i18n="lt13.x">Dry climate, huge stone blocks. Sand wears it down slowly.</td></tr>
+        <tr data-min="100000" data-max="2000000"><th scope="row" data-i18n="lt14.n">Faces of Mount Rushmore</th><td class="num" data-i18n="lt14.r">100,000–2 million years</td><td data-i18n="lt14.x">At the Park Service’s estimate of 2.5 cm per 10,000 years. Frost in unsealed cracks could be faster.</td></tr>
+        <tr data-min="100000" data-max="10000000"><th scope="row" data-i18n="lt15.n">Bronze statues</th><td class="num" data-i18n="lt15.r">100,000–10 million years</td><td data-i18n="lt15.x">A green patina protects them. In sediment they could last millions of years.</td></tr>
+        <tr data-min="1000000" data-max="100000000"><th scope="row" data-i18n="lt16.n">Footprints on the Moon</th><td class="num" data-i18n="lt16.r">1 million–100 million years</td><td data-i18n="lt16.x">No wind, no rain. Only tiny meteorites slowly blur them.</td></tr>
+        <tr data-min="1000000" data-max="100000000"><th scope="row" data-i18n="lt17.n">Satellites in high orbit</th><td class="num" data-i18n="lt17.r">1 million–100 million years</td><td data-i18n="lt17.x">Geostationary satellites stay up for millions of years.</td></tr>
+        <tr data-min="1000000" data-max="1000000000"><th scope="row" data-i18n="lt18.n">Our layer in the rock</th><td class="num" data-i18n="lt18.r">1 million–1 billion years</td><td data-i18n="lt18.x">Concrete, aluminium, plastic films, odd isotopes: a permanent signature.</td></tr>
+        <tr data-min="500000000" data-max="5000000000"><th scope="row" data-i18n="lt19.n">Voyager’s golden record</th><td class="num" data-i18n="lt19.r">500 million–5 billion years</td><td data-i18n="lt19.x">Designed to last a billion years in interstellar space.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
 </section>
 
 <!-- ============ IX. THE AIR REMEMBERS (CO2) ============ -->
 <section class="scene" data-scene="co2" data-bg="#080a0c">
   <div class="stage">
     <div class="co2-wrap">
-      <p class="hud-label" data-i18n="co2.title">Carbon dioxide in the air, parts per million</p>
-      <div class="co2-chart" id="co2-chart"></div>
-      <p class="co2-note" data-i18n="co2.note">Illustrative model: a sum of decay processes (ocean uptake, carbonate and rock weathering) fitted to published estimates. Real values would vary by tens of ppm.</p>
+      <p class="hud-label" data-i18n="co2.title">Carbon dioxide in the air, parts per million · illustrative model</p>
+      <div class="co2-chart" id="co2-chart" aria-hidden="true"></div>
+      <p class="sr-only" data-i18n="co2.alt">Line chart on a logarithmic time scale. Carbon dioxide starts at about 428 ppm, falls to roughly 390 after a century and about 360 after a thousand years, then declines slowly to the pre-industrial 280 ppm over several hundred thousand years. A shaded band shows the spread.</p>
+      <p class="co2-note" data-i18n="co2.note">Not a forecast. The curve adds up decay processes (ocean uptake, carbonate dissolution, rock weathering) with the shape and timescales described by Archer et al. (2009); the band shows how much the lingering fraction varies between models.</p>
     </div>
   </div>
   <div class="steps">
     <div class="step" data-t="1" data-side="left">
       <div class="card chapter">
+        <p class="stamp" data-i18n="co2.s0">The day we vanish</p>
         <p class="chapter-num">IX</p>
         <h2 data-i18n="co2.h">The air remembers</h2>
-        <p data-i18n="co2.p0">On the day we vanish, the air holds about 427 parts per million of carbon dioxide, up from 280 before the industrial age. The smokestacks go cold, but the carbon is already up there.</p>
+        <p data-i18n="co2.p0">On the day we vanish, the air holds about 428 parts per million of carbon dioxide, NOAA's global estimate for September 2026,<sup class="ref"><a href="#src-13" aria-label="Source 13">13</a></sup> up from 280 before the industrial age. The smokestacks go cold, but the carbon is already up there.</p>
       </div>
     </div>
-    <div class="step" data-t="100" data-side="left">
+    <div class="step" data-t="100" data-approx data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="co2.p1">The oceans and new forests start drinking it back. It is fast at first, then slow. A century on, the level is still higher than at any point in the two million years before us.</p>
+        <p data-i18n="co2.p1">The oceans and new forests start drinking it back, quickly at first, then slowly. A century on, the level is probably still higher than at any time in the two million years before us.</p>
       </div>
     </div>
-    <div class="step" data-t="3000" data-side="left">
+    <div class="step" data-t="1000" data-range="200,2000" data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="co2.p2">After the oceans have had their fill, roughly a quarter of our carbon remains, and the planet stays warmer than in 1850. Ice sheets keep melting for centuries, and the seas keep rising for thousands of years.</p>
+        <p data-i18n="co2.p2">Once the oceans have had their fill, somewhere between a fifth and a third of our carbon is still in the air,<sup class="ref"><a href="#src-14" aria-label="Source 14">14</a></sup> and the planet stays warmer than in 1850. Ice sheets keep melting for centuries, and the seas keep rising for thousands of years.</p>
       </div>
     </div>
-    <div class="step" data-t="200000" data-side="left">
+    <div class="step" data-t="200000" data-range="100000,500000" data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="co2.p3">The last of it is removed by rain, slowly dissolving rock and washing the carbon into the sea, where it becomes limestone. That takes a few hundred thousand years. Our exhaust, it turns out, is one of the longest-lasting things we left behind.</p>
+        <p data-i18n="co2.p3">The last of it is removed by rain, slowly dissolving rock and washing the carbon into the sea, where it becomes limestone. That takes hundreds of thousands of years. Our exhaust, it turns out, is one of the longest-lasting things we left behind.</p>
       </div>
     </div>
   </div>
@@ -451,37 +619,39 @@
 <!-- ============ X. STONE AND ICE (ice globe) ============ -->
 <section class="scene" data-scene="ice" data-bg="#070a0e">
   <div class="stage">
-    <canvas class="fill"></canvas>
-    <div class="map-hud">
-      <p class="hud-label" data-i18n="ice.hud">Cities under the ice</p>
-      <p class="hud-value" id="ice-count">0</p>
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="ice.alt">A globe centred on the North Atlantic. In one scenario for the next ice age, ice sheets spread from the Arctic over northern North America and Europe, covering about 160 large cities, while Bucharest stays south of the ice.</p>
+    <div class="map-hud" aria-hidden="true">
+      <p class="hud-label" data-i18n="ice.hud">Cities under the ice · scenario</p>
+      <p class="hud-value" id="ice-count"></p>
       <p class="hud-sub" id="ice-names"></p>
     </div>
   </div>
   <div class="steps">
-    <div class="step" data-t="10000" data-side="right">
+    <div class="step" data-t="10000" data-approx data-side="right">
       <div class="card chapter">
+        <p class="stamp"></p>
         <p class="chapter-num">X</p>
         <h2 data-i18n="ice.h">Stone and ice</h2>
-        <p data-i18n="ice.p0">Ten thousand years is about the time since the first farmers. It is enough to erase almost everything we built. The Great Pyramid still stands, a little blunter. Stretches of the Great Wall survive as a line of low ridges across the hills.</p>
+        <p data-i18n="ice.p0">Ten thousand years is about the time since the first farmers. It is enough to erase almost everything we built. The Great Pyramid probably still stands, a little blunter. Stretches of the Great Wall survive as a line of low ridges across the hills.</p>
       </div>
     </div>
-    <div class="step" data-t="24100" data-side="right">
+    <div class="step" data-t="24100" data-exact data-side="right">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="ice.p1">Half of all the plutonium we made has now decayed. The other half will take another 24,100 years to halve again.</p>
+        <p data-i18n="ice.p1">By now, half of the plutonium-239 that existed on the day we vanished has turned into uranium. Wait another 24,100 years and half of what is left goes the same way. The planet is rid of it the slow way, one halving at a time.</p>
       </div>
     </div>
-    <div class="step" data-t="60000" data-side="right">
+    <div class="step" data-t="100000" data-range="50000,150000" data-tag="scenario" data-side="right">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="ice.p2">Then the ice comes back. Earth's orbit drifts, northern summers cool, and the ice sheets grow. If this one matches the last, it will bulldoze Chicago, Toronto, Stockholm and Berlin into gravel. Bucharest, far to the south, is spared. Our lingering carbon may have delayed it by tens of thousands of years.</p>
+        <p data-i18n="ice.p2">Without us, this warm spell would probably have lasted about another 50,000 years anyway. Our carbon stretches it further: in one model, 1,000 to 1,500 billion tonnes of emitted carbon postpone the next ice age by at least 100,000 years.<sup class="ref"><a href="#src-15" aria-label="Source 15">15</a></sup> We had released some 740 by the day we vanished.<sup class="ref"><a href="#src-16" aria-label="Source 16">16</a></sup> But the ice is patient. If it grows like the last one, it will grind Chicago, Toronto, Stockholm and Berlin into gravel. Bucharest, far to the south, is spared.</p>
       </div>
     </div>
-    <div class="step" data-t="1000000" data-side="right">
+    <div class="step" data-t="1000000" data-approx data-side="right">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="ice.p3">After a million years, the faces on Mount Rushmore, eroding about 2.5 cm every ten thousand years, are still recognisable. Most of the species alive today are still around too. New ones are appearing on islands.</p>
+        <p data-i18n="ice.p3">The Park Service estimates that Mount Rushmore's granite wears away about 2.5 cm every ten thousand years.<sup class="ref"><a href="#src-17" aria-label="Source 17">17</a></sup> At that rate the faces would still be recognisable after a million years, unless frost gets into the cracks that nobody seals any more. Most of today's species are probably still around. New ones are appearing on islands.</p>
       </div>
     </div>
   </div>
@@ -490,34 +660,42 @@
 <!-- ============ XI. A LINE IN THE ROCK (strata) ============ -->
 <section class="scene" data-scene="strata" data-bg="#0e0c0a">
   <div class="stage">
-    <canvas class="fill"></canvas>
+    <canvas class="fill" aria-hidden="true"></canvas>
     <div class="tooltip" id="strata-tip" hidden></div>
     <div class="strata-scale" id="strata-scale" aria-hidden="true"></div>
+    <ol class="strata-key" id="strata-key" aria-label="Layers, from top to bottom" data-i18n-aria="aria.strata">
+      <li data-kind="future" data-i18n="strata.k1">Rock laid down after us</li>
+      <li data-kind="human" data-i18n="strata.k2">Our layer</li>
+      <li data-kind="holocene" data-i18n="strata.k3">The age of farmers</li>
+      <li data-kind="pleisto" data-i18n="strata.k4">Ice-age gravels</li>
+      <li data-kind="older" data-i18n="strata.k5">The world before</li>
+    </ol>
   </div>
   <div class="steps">
-    <div class="step" data-t="2000000" data-side="left">
+    <div class="step" data-t="2000000" data-range="1000000,10000000" data-side="left">
       <div class="card chapter">
+        <p class="stamp"></p>
         <p class="chapter-num">XI</p>
         <h2 data-i18n="strata.h">A line in the rock</h2>
-        <p data-i18n="strata.p0">All the concrete, asphalt, brick, metal, glass and plastic we produced weighs around 1.1 trillion tonnes. Around 2020, it came to outweigh every living thing on Earth.</p>
+        <p data-i18n="strata.p0">The raw material of that rock is already here. Around 2020, the concrete, asphalt, brick, metal, glass and plastic we had made reached roughly 1.1 trillion tonnes, which by one careful accounting outweighed all life on Earth.<sup class="ref"><a href="#src-18" aria-label="Source 18">18</a></sup> We were adding about 30 billion tonnes more every year.</p>
       </div>
     </div>
-    <div class="step" data-t="8000000" data-side="left">
+    <div class="step" data-t="8000000" data-range="1000000,10000000" data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="strata.p1">Buried and squeezed, it becomes rock. Concrete turns into an odd conglomerate. Aluminium, which nature almost never makes pure, stays as glinting flecks. Plastics thin into black films of carbon, like the fossil outlines of leaves.</p>
+        <p data-i18n="strata.p1">Buried and squeezed, it becomes rock. Concrete would look like an odd conglomerate. Aluminium, which nature almost never makes pure, could survive as glinting flecks. Some plastics may flatten into thin films of carbon, the way fossil leaves do.<sup class="ref"><a href="#src-19" aria-label="Source 19">19</a></sup></p>
       </div>
     </div>
-    <div class="step" data-t="30000000" data-side="left">
+    <div class="step" data-t="30000000" data-range="10000000,100000000" data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="strata.p2">A geologist of the far future would find a band a few centimetres thick. It is full of strange minerals, carbon with the wrong isotopes, and bones, billions upon billions of chicken bones. Hover the rock to read its layers.</p>
+        <p data-i18n="strata.p2">A geologist of the far future might find a band only centimetres thick across open country, and metres thick under old cities and landfills. It would hold strange minerals, carbon with an unmistakable isotope fingerprint, and bones, an enormous number of chicken bones.<sup class="ref"><a href="#src-20" aria-label="Source 20">20</a></sup> Hover or tap the rock to read its layers.</p>
       </div>
     </div>
-    <div class="step" data-t="100000000" data-side="left">
+    <div class="step" data-t="100000000" data-approx data-side="left">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="strata.p3">By then, the variety of life has recovered from the extinctions we started, as it did after the asteroid, in roughly ten million years. The creatures of that world will walk over the line without knowing what it means.</p>
+        <p data-i18n="strata.p3">Life will long since have rebuilt its variety. After the great extinctions of the past, including the asteroid, that took on the order of ten million years.<sup class="ref"><a href="#src-21" aria-label="Source 21">21</a></sup> The creatures of that world will walk over the line without knowing what it means.</p>
       </div>
     </div>
   </div>
@@ -526,20 +704,21 @@
 <!-- ============ XII. THE LAST MESSAGE (voyager) ============ -->
 <section class="scene" data-scene="voyager" data-bg="#020306">
   <div class="stage">
-    <canvas class="fill"></canvas>
+    <canvas class="fill" aria-hidden="true"></canvas>
   </div>
   <div class="steps">
     <div class="step" data-t="300000000" data-side="center">
       <div class="card chapter">
+        <p class="stamp" data-i18n="voy.s0">Already on its way</p>
         <p class="chapter-num">XII</p>
         <h2 data-i18n="voy.h">The last message</h2>
-        <p data-i18n="voy.p0">One thing we made will outlast Earth itself. Two small spacecraft, Voyager 1 and 2, are now more than 20 billion kilometres away and still going. Bolted to each is a gold-plated record of Earth: rain, a heartbeat, a kiss, greetings in 55 languages, Bach and Chuck Berry.</p>
+        <p data-i18n="voy.p0">One thing we made may outlast life on Earth itself. Two small spacecraft, Voyager 1 and 2, are more than 20 billion kilometres away and still going. Bolted to each is a gold-plated record of Earth: rain, a heartbeat, a kiss, greetings in 55 languages, Bach and Chuck Berry.</p>
       </div>
     </div>
-    <div class="step" data-t="1000000000" data-side="center">
+    <div class="step" data-t="1000000000" data-approx data-side="center">
       <div class="card">
         <p class="stamp"></p>
-        <p data-i18n="voy.p1">Its makers expected the record to survive a billion years. By then the slowly brightening Sun will have begun to boil away Earth's oceans. The record will still be drifting between the stars, playing to no one, a letter with no return address.</p>
+        <p data-i18n="voy.p1">Its makers expected the record to survive for more than a billion years.<sup class="ref"><a href="#src-22" aria-label="Source 22">22</a></sup> Around then, a slowly brightening Sun is expected to start boiling Earth's oceans away. The record will still be drifting between the stars, playing to no one, a letter with no return address.</p>
       </div>
     </div>
     <div class="step final" data-t="1000000000" data-side="center">
@@ -555,39 +734,52 @@
 
 <footer class="colophon">
   <div class="colophon-inner">
-    <h2 data-i18n="foot.h">Sources and notes</h2>
-    <p data-i18n="foot.p">This is a thought experiment, so the timings are estimates drawn from engineering studies, ecology and the fossil record. Many of the ideas were first gathered by Alan Weisman in <i>The World Without Us</i> (2007).</p>
-    <ul class="sources">
-      <li>Power plants: WRI Global Power Plant Database v1.3. City lights: Natural Earth populated places. Maps: Natural Earth, world-atlas.</li>
-      <li>Weisman, A. (2007). <i>The World Without Us</i>. Thomas Dunne Books.</li>
-      <li>Falchi, F. et al. (2016). The new world atlas of artificial night sky brightness. <i>Science Advances</i>.</li>
-      <li>Elhacham, E. et al. (2020). Global human-made mass exceeds all living biomass. <i>Nature</i>.</li>
-      <li>Archer, D. et al. (2009). Atmospheric lifetime of fossil fuel carbon dioxide. <i>Annual Review of Earth and Planetary Sciences</i>.</li>
-      <li>Deryabina, T. G. et al. (2015). Long-term census data reveal abundant wildlife populations at Chernobyl. <i>Current Biology</i>.</li>
-      <li>Loss, S. R. et al. (2014). Bird–building collisions in the United States. <i>The Condor</i>.</li>
-      <li>Bennett, C. E. et al. (2018). The broiler chicken as a signal of a human reconfigured biosphere. <i>Royal Society Open Science</i>.</li>
-      <li>Bar-On, Y. M., Phillips, R. &amp; Milo, R. (2018). The biomass distribution on Earth. <i>PNAS</i>.</li>
-      <li>Ganopolski, A. et al. (2016). Critical insolation–CO₂ relation for diagnosing past and future glacial inception. <i>Nature</i>.</li>
-      <li>IPCC AR6 Working Group I (2021), chapters on aerosols and the carbon cycle.</li>
-    </ul>
+    <h2 data-i18n="foot.h0">About this timeline</h2>
+    <p data-i18n="foot.p0">What would happen to Earth if humans disappeared tomorrow? This page follows that question from the first hours, as aircraft and power grids fail, through the centuries it takes cities to become forest, to the millions of years in which our world becomes a layer of rock. It is a thought experiment built on engineering studies, ecology and the fossil record. Many of its ideas were first gathered by Alan Weisman in <i>The World Without Us</i> (2007).</p>
+    <p data-i18n="foot.p1">How to read the times: a range such as 10–50 years shows how far serious estimates spread, and <b>~</b> marks a rough value. <b>Scenario</b> marks one modelled future among several, not a forecast. The maps and animations illustrate these estimates; they do not measure them.</p>
+    <h2 data-i18n="foot.h">Sources</h2>
+    <ol class="sources">
+      <li id="src-1">World Resources Institute (2021). Global Power Plant Database v1.3.0: 34,936 plants in 167 countries. No longer maintained since 2022. City lights: Natural Earth populated places. Maps: Natural Earth, world-atlas.</li>
+      <li id="src-2">NY1 (21 July 2026). “MTA trying to prevent subway flooding to keep service going”: 286 pump rooms remove 13 million gallons on a dry day.</li>
+      <li id="src-3">Weisman, A. (2007). <i>The World Without Us</i>, chapter “The City Without Us”. Thomas Dunne Books.</li>
+      <li id="src-4">Bar-On, Y. M., Phillips, R. &amp; Milo, R. (2018). The biomass distribution on Earth. <i>PNAS</i> 115, 6506–6511.</li>
+      <li id="src-5">Loss, S. R. et al. (2014). Bird–building collisions in the United States: estimates of annual mortality. <i>The Condor</i> 116, 8–23.</li>
+      <li id="src-6">US Nuclear Regulatory Commission (2001). Technical study of spent fuel pool accident risk at decommissioning nuclear power plants (NUREG-1738).</li>
+      <li id="src-7">Cernavodă NPP / IAEA technical meeting: CANDU 6 spent fuel management; intermediate dry storage (DICA, MACSTOR modules).</li>
+      <li id="src-8">Love, C. et al. (2026). Signatures of radiation-induced stress and putative selection on immune targets in Chornobyl wolves. <i>Molecular Ecology</i> 35(9).</li>
+      <li id="src-9">Falchi, F. et al. (2016). The new world atlas of artificial night sky brightness. <i>Science Advances</i> 2, e1600377.</li>
+      <li id="src-10">Matthews, H. D. &amp; Zickfeld, K. (2012). Climate response to zeroed emissions of greenhouse gases and aerosols. <i>Nature Climate Change</i> 2, 338–341.</li>
+      <li id="src-11">Deryabina, T. G. et al. (2015). Long-term census data reveal abundant wildlife populations at Chernobyl. <i>Current Biology</i> 25, R824–R826.</li>
+      <li id="src-12">Romanian Ministry of Environment, Waters and Forests (December 2025). Genetic study of the brown bear population: 10,657–12,787 individuals, from about 24,000 samples in 25 counties.</li>
+      <li id="src-13">NOAA Global Monitoring Laboratory. Trends in atmospheric carbon dioxide, global estimate, September 2026.</li>
+      <li id="src-14">Archer, D. et al. (2009). Atmospheric lifetime of fossil fuel carbon dioxide. <i>Annual Review of Earth and Planetary Sciences</i> 37, 117–134.</li>
+      <li id="src-15">Ganopolski, A., Winkelmann, R. &amp; Schellnhuber, H. J. (2016). Critical insolation–CO₂ relation for diagnosing past and future glacial inception. <i>Nature</i> 529, 200–203.</li>
+      <li id="src-16">Friedlingstein, P. et al. (2025). Global Carbon Budget 2025. <i>Earth System Science Data</i>. Cumulative fossil and land-use emissions, extrapolated to 2026.</li>
+      <li id="src-17">US National Park Service. Mount Rushmore National Memorial: geologic activity.</li>
+      <li id="src-18">Elhacham, E. et al. (2020). Global human-made mass exceeds all living biomass. <i>Nature</i> 588, 442–444. Comparison against dry biomass.</li>
+      <li id="src-19">Zalasiewicz, J. et al. (2016). The geological cycle of plastics and their use as a stratigraphic indicator of the Anthropocene. <i>Anthropocene</i> 13, 4–17.</li>
+      <li id="src-20">Bennett, C. E. et al. (2018). The broiler chicken as a signal of a human reconfigured biosphere. <i>Royal Society Open Science</i> 5, 180325.</li>
+      <li id="src-21">Kirchner, J. W. &amp; Weil, A. (2000). Delayed biological recovery from extinctions throughout the fossil record. <i>Nature</i> 404, 177–180.</li>
+      <li id="src-22">NASA Jet Propulsion Laboratory. Voyager: the Golden Record.</li>
+    </ol>
     <p class="made"><a href="https://mariuscomper.uk">mariuscomper.uk</a></p>
   </div>
 </footer>
 
-<script src="vendor/d3-array.min.js"></script>
-<script src="vendor/d3-geo.min.js"></script>
-<script src="vendor/topojson-client.min.js"></script>
-<script src="js/i18n.js"></script>
-<script src="js/core.js"></script>
-<script src="js/globe.js"></script>
-<script src="js/worldmap.js"></script>
-<script src="js/subway.js"></script>
-<script src="js/animals.js"></script>
-<script src="js/sky.js"></script>
-<script src="js/city.js"></script>
-<script src="js/romania.js"></script>
-<script src="js/charts.js"></script>
-<script src="js/strata.js"></script>
-<script src="js/voyager.js"></script>
+<script src="vendor/d3-array.min.js" defer></script>
+<script src="vendor/d3-geo.min.js" defer></script>
+<script src="vendor/topojson-client.min.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/core.js" defer></script>
+<script src="js/globe.js" defer></script>
+<script src="js/worldmap.js" defer></script>
+<script src="js/subway.js" defer></script>
+<script src="js/animals.js" defer></script>
+<script src="js/sky.js" defer></script>
+<script src="js/city.js" defer></script>
+<script src="js/romania.js" defer></script>
+<script src="js/charts.js" defer></script>
+<script src="js/strata.js" defer></script>
+<script src="js/voyager.js" defer></script>
 </body>
 </html>

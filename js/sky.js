@@ -104,11 +104,11 @@
     function render({ s, now }) {
       if (!mw || !o.w) return;
       curS = s;
-      const auto = 9 - 8 * W.smooth(0.6, 2, s);
+      const auto = 9 - 8 * W.smooth(0.25, 1.1, s);
       if (userB !== null && Math.abs(s - userS) > 0.6) userB = null;
       const B = userB !== null ? userB : auto;
       if (userB === null) slider.value = B.toFixed(2);
-      const haze = 1 - W.smooth(-0.2, 1, s);
+      const haze = 1 - W.smooth(-0.3, 0.8, s);
       const glow = (B - 1) / 8;
       const ctx = o.ctx;
       const limit = 8 - 0.5 * B - haze * 1.2;

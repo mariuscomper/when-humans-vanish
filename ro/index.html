@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="ro" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Când oamenii dispar: ce s-ar întâmpla dacă oamenii ar dispărea?</title>
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
+<meta name="description" content="O cronologie interactivă, bazată pe dovezi, a Pământului după dispariția oamenilor: primele ore, când cad rețelele electrice, secolele în care orașele devin pădure și milioanele de ani care urmează.">
+<link rel="canonical" href="https://mariuscomper.uk/when-humans-vanish/ro/">
+<link rel="alternate" hreflang="en" href="https://mariuscomper.uk/when-humans-vanish/">
+<link rel="alternate" hreflang="ro" href="https://mariuscomper.uk/when-humans-vanish/ro/">
+<link rel="alternate" hreflang="x-default" href="https://mariuscomper.uk/when-humans-vanish/">
+<meta name="theme-color" content="#06080d">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Marius Comper">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:title" content="Când oamenii dispar">
+<meta property="og:description" content="Mâine dimineață nu se mai trezește nimeni. O cronologie interactivă a Pământului în orele, secolele și milioanele de ani de după dispariția noastră.">
+<meta property="og:url" content="https://mariuscomper.uk/when-humans-vanish/ro/">
+<meta property="og:image" content="https://mariuscomper.uk/when-humans-vanish/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Când oamenii dispar: ce s-ar întâmpla dacă oamenii ar dispărea?",
+  "alternativeHeadline": "O cronologie a Pământului fără noi, de la primele ore la un miliard de ani",
+  "description": "O cronologie interactivă, bazată pe dovezi, a Pământului după dispariția oamenilor: primele ore, când cad rețelele electrice, secolele în care orașele devin pădure și milioanele de ani care urmează.",
+  "inLanguage": "ro",
+  "url": "https://mariuscomper.uk/when-humans-vanish/ro/",
+  "image": "https://mariuscomper.uk/when-humans-vanish/og.png",
+  "datePublished": "2026-09-25",
+  "dateModified": "2026-09-26",
+  "author": { "@type": "Person", "name": "Marius Comper", "url": "https://mariuscomper.uk" },
+  "about": ["World without humans", "Deep time", "Rewilding", "Anthropocene"]
+}
+</script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#lights" data-i18n="ui.skip" data-en="Skip the intro">Sari peste introducere</a>
+
+<!-- ============ fixed chrome ============ -->
+<header class="chrome">
+  <a class="wordmark" href="#top" data-i18n="ui.wordmark" data-en="When Humans Vanish">Când oamenii dispar</a>
+  <div class="lang" role="group" aria-label="Language / Limba">
+    <a id="lang-en" data-lang="en" href="../" hreflang="en" lang="en">EN</a>
+    <a id="lang-ro" data-lang="ro" href="./" hreflang="ro" lang="ro" aria-current="true">RO</a>
+  </div>
+</header>
+
+<aside class="gauge" aria-hidden="true">
+  <div class="gauge-readout"><span class="gauge-plus">T +</span><span id="gauge-value"></span></div>
+  <div class="gauge-track" id="gauge-track">
+    <div class="gauge-fill" id="gauge-fill"></div>
+    <div class="gauge-marker" id="gauge-marker"></div>
+  </div>
+</aside>
+
+<main id="top">
+
+<!-- ============ HERO + THE MOMENT (globe) ============ -->
+<section class="scene" data-scene="globe" data-bg="#05070c" data-align="center">
+  <div class="stage">
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="globe.alt" data-en="A slowly turning night-time Earth, lit by the lights of about 5,500 cities, with aircraft crossing it until their fuel runs out.">Un Pământ nocturn care se rotește încet, luminat de aproximativ 5.500 de orașe și traversat de avioane până li se termină combustibilul.</p>
+    <div class="globe-caption" id="globe-caption" aria-hidden="true"></div>
+  </div>
+  <div class="steps">
+    <div class="step hero" data-t="0">
+      <div class="hero-inner">
+        <p class="kicker" data-i18n="hero.kicker" data-en="A thought experiment in deep time">Un experiment de imaginație, la scara timpului geologic</p>
+        <h1 data-i18n="hero.title" data-en="When Humans Vanish">Când oamenii dispar</h1>
+        <p class="lede" data-i18n="hero.lede" data-en="Tomorrow morning, nobody wakes up. No war, no plague, no asteroid. Eight billion people simply stop being here, and everything we built is left exactly where it stands. Scroll to watch the planet notice.">Mâine dimineață nu se mai trezește nimeni. Fără război, fără molimă, fără asteroid. Opt miliarde de oameni pur și simplu nu mai sunt, iar tot ce am construit rămâne exact acolo unde se află. Derulează ca să vezi cum observă planeta.</p>
+        <p class="cue" data-i18n="hero.cue" data-en="Scroll to begin">Derulează ca să începi</p>
+      </div>
+    </div>
+    <div class="step" data-t="0" data-side="left">
+      <div class="card">
+        <p class="stamp" data-i18n="m1.stamp" data-en="The moment">Clipa</p>
+        <p data-i18n="m1.p" data-en="It happens between one second and the next. At that instant it is breakfast time in Bucharest, mid-afternoon in Tokyo and late evening in Los Angeles. Around ten thousand aircraft are in the air. Tens of thousands of ships are at sea. Kettles are coming to the boil.">Se întâmplă între o secundă și următoarea. În acel moment, la București e ora micului dejun, la Tokyo e după-amiază, iar la Los Angeles e seară târziu. În aer sunt aproximativ zece mii de avioane. Pe mări, zeci de mii de nave. Pe aragazuri, ceainice care stau să fiarbă.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.00003" data-side="left">
+      <div class="card">
+        <p class="stamp" data-i18n="m2.stamp" data-en="+ a few minutes">+ câteva minute</p>
+        <p data-i18n="m2.p" data-en="The machines don't notice at first. Autopilots hold their headings. Engines idle in empty cars. Traffic lights keep cycling red, amber, green for streets with nobody on them. For a few hours our world runs on momentum, like a song still playing in an empty room.">La început, mașinăriile nu observă nimic. Piloții automați își țin cursul. Motoarele merg în gol în mașini goale. Semafoarele trec mai departe prin roșu, galben și verde pentru străzi pe care nu mai e nimeni. Câteva ore, lumea noastră merge din inerție, ca un cântec care continuă într-o cameră goală.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.0009" data-range="0.000114,0.00205" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="m3.p" data-en="Then the fuel runs out. One by one, over the next hours, the airliners drain their tanks and glide down, into oceans, forests and fields. It is the last human noise many places will hear for a very long time.">Apoi se termină combustibilul. Unul câte unul, în orele care urmează, avioanele de linie își golesc rezervoarele și planează în jos, în oceane, păduri și câmpuri. Pentru multe locuri, e ultimul zgomot omenesc pe care îl vor mai auzi pentru foarte mult timp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ I. THE LIGHTS GO OUT (world map) ============ -->
+<section class="scene" id="lights" tabindex="-1" data-scene="lights" data-bg="#06080d">
+  <div class="stage">
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="lights.alt" data-en="World map of 16,679 large power plants, coloured by fuel. As time passes, regional grids collapse at different moments and the plants and city lights go dark, until only a few isolated hydroelectric and solar plants remain.">Harta lumii cu 16.679 de centrale electrice mari, colorate după combustibil. Pe măsură ce trece timpul, rețelele regionale se prăbușesc în momente diferite, iar centralele și luminile orașelor se sting, până când rămân doar câteva hidrocentrale și instalații solare izolate.</p>
+    <div class="map-hud" aria-hidden="true">
+      <p class="hud-label" data-i18n="lights.hud" data-en="Generating capacity still connected">Capacitate de producție încă conectată</p>
+      <p class="hud-value" id="lights-gw"></p>
+      <p class="hud-sub" id="lights-time"></p>
+    </div>
+    <div class="legend" id="lights-legend" role="group" aria-label="Centrale electrice după combustibil" data-en-aria="Power plants by fuel" data-i18n-aria="aria.legend"></div>
+    <p class="map-source" data-i18n="lights.src" data-en="Data: WRI Global Power Plant Database v1.3 (2021), plants of 20 MW and above. Timings are illustrative.">Date: WRI Global Power Plant Database v1.3 (2021), centrale de cel puțin 20 MW. Momentele sunt ilustrative.</p>
+    <div class="tooltip" id="lights-tip" hidden></div>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="0.00005" data-side="left">
+      <div class="card chapter">
+        <p class="chapter-num">I</p>
+        <h2 data-i18n="lights.h" data-en="The lights go out">Se sting luminile</h2>
+        <p data-i18n="lights.p0" data-en="Every dot is a large power plant recorded by the World Resources Institute: nearly 35,000 of them in 167 countries, a big but incomplete snapshot last updated in 2021.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-1&quot; aria-label=&quot;Source 1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Right now they are all still running. The world they feed is empty, but it is still hungry: pumps, freezers, servers, air conditioning and factory lines hum on with nobody watching.">Fiecare punct e o centrală electrică mare, înregistrată de World Resources Institute: aproape 35.000 de centrale din 167 de țări, un instantaneu amplu, dar incomplet, actualizat ultima dată în 2021.<sup class="ref"><a href="#src-1" aria-label="Sursa 1">1</a></sup> Acum funcționează toate. Lumea pe care o alimentează e goală, dar încă flămândă: pompe, congelatoare, servere, aer condiționat și linii de producție torc mai departe, fără ca nimeni să le supravegheze.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.00011" data-side="left">
+      <div class="card">
+        <p class="stamp" data-i18n="lights.s1" data-en="+ the first hour">+ prima oră</p>
+        <p data-i18n="lights.p1" data-en="A modern grid is largely automatic. Machines balance supply and demand second by second, and they can keep that up for a while. What they cannot do is order coal, clear a fallen line, answer an alarm, or restart a plant that has tripped.">O rețea modernă merge în mare parte singură. Automatele echilibrează producția și consumul secundă de secundă și pot face asta o vreme. Ce nu pot face e să comande cărbune, să ridice o linie căzută, să răspundă la o alarmă sau să repornească o centrală care s-a decuplat.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.0007" data-range="0.000114,0.00137" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="lights.p2" data-en="So the failures arrive one at a time. A gas supply falters. A storm brings down a line. A transformer overheats. A protection relay takes a plant offline, and nobody switches it back on. Each loss pushes the rest of the grid a little closer to the edge.">Așa că avariile vin pe rând. O conductă de gaz pierde presiune. O furtună doboară o linie. Un transformator se supraîncălzește. Un releu de protecție scoate o centrală din rețea și nimeni n-o mai pornește. Fiecare pierdere împinge restul rețelei ceva mai aproape de margine.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.0027" data-side="left">
+      <div class="card">
+        <p class="stamp" data-i18n="lights.s3" data-en="+ hours to days">+ ore până la zile</p>
+        <p data-i18n="lights.p3" data-en="Somewhere, one failure too many sets off a cascade, and a whole region goes dark in seconds. It happens at different times in different places: some grids fall within hours, others limp on for days. Hover or tap the map, or switch fuels on and off in the key, to see what is left.">Undeva, o avarie în plus declanșează o cascadă, iar o regiune întreagă se stinge în câteva secunde. Se întâmplă la momente diferite, în locuri diferite: unele rețele cad în câteva ore, altele se mai târăsc zile întregi. Treci cu mouse-ul sau atinge harta, ori pornește și oprește combustibilii din legendă, ca să vezi ce a mai rămas.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.03" data-side="left">
+      <div class="card">
+        <p class="stamp" data-i18n="lights.s4" data-en="+ days to weeks">+ zile până la săptămâni</p>
+        <p data-i18n="lights.p4" data-en="A few holdouts remain. A hydroelectric dam feeding a small, isolated grid could keep its turbines turning for weeks or more, until debris or mussels clog the intakes or a fault trips it for good. A rooftop solar panel keeps charging a battery for nobody.">Câteva rezistă. O hidrocentrală care alimentează o rețea mică și izolată și-ar putea învârti turbinele săptămâni la rând sau mai mult, până când resturile ori scoicile îi înfundă prizele de apă sau o defecțiune o oprește definitiv. Un panou solar de pe un acoperiș încarcă mai departe o baterie pentru nimeni.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.08" data-side="left">
+      <div class="card">
+        <p class="stamp" data-i18n="lights.s5" data-en="+ weeks">+ săptămâni</p>
+        <p data-i18n="lights.p5" data-en="The night side of Earth is now darker than it has been since before electric light. What glows is lightning, lava, the aurora, and fires that nobody comes to put out.">Fața întunecată a Pământului e acum mai neagră decât a fost vreodată de la apariția luminii electrice. Strălucesc doar fulgerele, lava, aurora și incendiile pe care nu mai vine nimeni să le stingă.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ II. WATER IN THE TUNNELS (subway) ============ -->
+<section class="scene" data-scene="subway" data-bg="#070a0f">
+  <div class="stage">
+    <svg class="fill subway-svg" id="subway-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+    <p class="sr-only" data-i18n="subway.alt" data-en="Cross-section of a New York street and the subway tunnel beneath it. After the pumps stop, water rises in the tunnel; years later the rusted columns bend and the street above sags into the hole.">Secțiune printr-o stradă din New York și tunelul de metrou de dedesubt. După ce pompele se opresc, apa urcă în tunel; ani mai târziu, stâlpii ruginiți se îndoaie, iar strada se lasă în gol.</p>
+    <div class="subway-hud" aria-hidden="true">
+      <p class="hud-label" data-i18n="subway.hud" data-en="Water the pumps did not remove">Apă pe care pompele n-au mai scos-o</p>
+      <p class="hud-value" id="subway-litres"></p>
+      <p class="hud-sub" id="subway-level"></p>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="0.0011" data-side="right">
+      <div class="card chapter">
+        <p class="stamp" data-i18n="subway.s0" data-en="On an ordinary day">Într-o zi obișnuită</p>
+        <p class="chapter-num">II</p>
+        <h2 data-i18n="subway.h" data-en="Water in the tunnels">Apa din tuneluri</h2>
+        <p data-i18n="subway.p0" data-en="New York has been fighting water underground for more than a century. The island was once streams and marsh, and the water never really left. On a dry day, pumps in 286 pump rooms lift about 13 million gallons, some 50 million litres, out of the subway.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-2&quot; aria-label=&quot;Source 2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;">New Yorkul se luptă cu apa din subteran de peste un secol. Insula era cândva numai pâraie și mlaștini, iar apa n-a plecat niciodată cu adevărat. Într-o zi fără ploaie, pompele din 286 de camere de pompare scot din metrou aproape 50 de milioane de litri.<sup class="ref"><a href="#src-2" aria-label="Sursa 2">2</a></sup></p>
+      </div>
+    </div>
+    <div class="step" data-t="0.0041" data-approx data-side="right">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="subway.p1" data-en="When the power fails, the pumps stop. Water collects at the lowest points first, in the tunnels beneath the rivers. One of the engineers who kept the system dry put it to the writer Alan Weisman plainly: “Within 36 hours, the whole thing could fill.”&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-3&quot; aria-label=&quot;Source 3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;">Când se oprește curentul, se opresc și pompele. Apa se adună întâi în punctele cele mai joase, în tunelurile de sub râuri. Unul dintre inginerii care țineau metroul uscat i-a spus-o scriitorului Alan Weisman fără ocolișuri: „În 36 de ore, totul s-ar putea umple.”<sup class="ref"><a href="#src-3" aria-label="Sursa 3">3</a></sup></p>
+      </div>
+    </div>
+    <div class="step" data-t="0.1" data-side="right">
+      <div class="card">
+        <p class="stamp" data-i18n="subway.s2" data-en="+ months to years">+ luni până la ani</p>
+        <p data-i18n="subway.p2" data-en="Now the water starts its slow work. The steel columns that hold up the streets stand in it, and begin to rust. London, Paris and Tokyo face the same patient flood beneath their pavements.">Acum apa își începe munca lentă. Stâlpii de oțel care susțin străzile stau în ea și încep să ruginească. Londra, Parisul și Tokyo au sub trotuare aceeași inundație răbdătoare.</p>
+      </div>
+    </div>
+    <div class="step" data-t="20" data-approx data-side="right">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="subway.p3" data-en="Within a couple of decades, the columns could give way. Avenues would cave in above the tunnels, and streets built over forgotten streams would become streams again.">În câteva decenii, stâlpii ar putea ceda. Bulevardele s-ar prăbuși deasupra tunelurilor, iar străzile construite peste pâraie uitate ar redeveni pâraie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ III. THE ANIMALS NOTICE (specimen cards) ============ -->
+<section class="flow" id="animals" data-bg="#0a0d0b">
+  <div class="flow-head" data-t="0.05">
+    <p class="stamp" data-i18n="animals.s" data-en="+ days to decades">+ zile până la decenii</p>
+    <p class="chapter-num">III</p>
+    <h2 data-i18n="animals.h" data-en="The animals notice">Animalele observă</h2>
+    <p class="flow-lede" data-i18n="animals.p" data-en="We share the planet with roughly 25 billion chickens, 1.5 billion cattle, and nearly a billion dogs, most of them shaped by us, for us. Some will follow us out. Others have been waiting.">Împărțim planeta cu aproximativ 25 de miliarde de găini, 1,5 miliarde de vite și aproape un miliard de câini, cei mai mulți modelați de noi, pentru noi. Unii ne vor urma. Alții doar au așteptat.</p>
+  </div>
+  <div class="filters" role="group" aria-label="Filtrează speciile" data-en-aria="Filter species" data-i18n-aria="aria.filters">
+    <button type="button" class="chip" id="f-all" data-filter="all" aria-pressed="true" data-i18n="animals.all" data-en="All">Toate</button>
+    <button type="button" class="chip" id="f-thrive" data-filter="thrive" aria-pressed="false" data-i18n="animals.thrive" data-en="Thrives">Prosperă</button>
+    <button type="button" class="chip" id="f-adapt" data-filter="adapt" aria-pressed="false" data-i18n="animals.adapt" data-en="Adapts">Se adaptează</button>
+    <button type="button" class="chip" id="f-gone" data-filter="gone" aria-pressed="false" data-i18n="animals.gone" data-en="Vanishes">Dispar</button>
+  </div>
+  <div class="specimens" id="specimens">
+    <article class="specimen" data-v="gone">
+      <div class="sp-top"><h3 data-i18n="sp1.n" data-en="Head louse">Păduchele de cap</h3><span class="sp-no">No. 001</span></div>
+      <p class="latin">Pediculus humanus capitis</p>
+      <p class="stat" data-i18n="sp1.s" data-en="Host: humans only">Gazdă: doar oamenii</p>
+      <p class="desc" data-i18n="sp1.d" data-en="It lives on human scalps and nowhere else. When we go, it goes, along with our body lice and a few gut worms that have never known another home.">Trăiește pe scalpul oamenilor și nicăieri altundeva. Când plecăm noi, pleacă și el, împreună cu păduchii de corp și câțiva viermi intestinali care n-au cunoscut altă casă.</p>
+      <span class="verdict gone" data-i18n="v.gone" data-en="✕ Vanishes">✕ Dispare</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp2.n" data-en="Dog">Câinele</h3><span class="sp-no">No. 002</span></div>
+      <p class="latin">Canis familiaris</p>
+      <p class="stat" data-i18n="sp2.s" data-en="≈ 900 million alive">≈ 900 de milioane în viață</p>
+      <p class="desc" data-i18n="sp2.d" data-en="Most dogs on Earth already roam free. The toy breeds don’t last. After a few generations the survivors converge on one look: medium-sized, tan, prick-eared, curly-tailed, the classic village dog.">Majoritatea câinilor de pe Pământ trăiesc deja liberi. Rasele mici nu rezistă. După câteva generații, supraviețuitorii ajung să arate la fel: talie medie, blană roșcată, urechi ridicate, coadă încârligată, câinele clasic de sat.</p>
+      <span class="verdict adapt" data-i18n="v.adapt" data-en="◆ Adapts">◆ Se adaptează</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp3.n" data-en="House cat">Pisica de casă</h3><span class="sp-no">No. 003</span></div>
+      <p class="latin">Felis catus</p>
+      <p class="stat" data-i18n="sp3.s" data-en="Never fully domesticated">Niciodată complet domesticită</p>
+      <p class="desc" data-i18n="sp3.d" data-en="An efficient, independent hunter that only half signed up to living with us. It does just fine. Songbirds pay the price.">O vânătoare eficientă și independentă, care a acceptat doar pe jumătate să trăiască cu noi. Se descurcă foarte bine. Păsările cântătoare plătesc prețul.</p>
+      <span class="verdict thrive" data-i18n="v.thrive" data-en="▲ Thrives">▲ Prosperă</span>
+    </article>
+    <article class="specimen" data-v="gone">
+      <div class="sp-top"><h3 data-i18n="sp4.n" data-en="Chicken">Găina</h3><span class="sp-no">No. 004</span></div>
+      <p class="latin">Gallus gallus domesticus</p>
+      <p class="stat" data-i18n="sp4.s" data-en="≈ 25 billion alive">≈ 25 de miliarde în viață</p>
+      <p class="desc" data-i18n="sp4.d" data-en="Together they weigh more than twice as much as all wild birds.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-4&quot; aria-label=&quot;Source 4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; Most live indoors and die within days when feed and ventilation stop. A few village flocks in warm places go feral, like their jungle ancestors.">Împreună cântăresc de peste două ori mai mult decât toate păsările sălbatice.<sup class="ref"><a href="#src-4" aria-label="Sursa 4">4</a></sup> Cele mai multe trăiesc în hale și mor în câteva zile, când se opresc hrana și ventilația. Câteva cârduri din satele calde se sălbăticesc, ca strămoșii lor din junglă.</p>
+      <span class="verdict gone" data-i18n="v.gone" data-en="✕ Vanishes">✕ Dispare</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp5.n" data-en="Cattle">Vita</h3><span class="sp-no">No. 005</span></div>
+      <p class="latin">Bos taurus</p>
+      <p class="stat" data-i18n="sp5.s" data-en="≈ 1.5 billion head">≈ 1,5 miliarde de capete</p>
+      <p class="desc" data-i18n="sp5.d" data-en="Dairy cows, bred to be milked, suffer first. Hardy breeds go wild in herds and become prey for wolves again, as the aurochs once were.">Vacile de lapte, crescute ca să fie mulse, suferă primele. Rasele rezistente se sălbăticesc în turme și redevin prada lupilor, cum era odinioară bourul.</p>
+      <span class="verdict adapt" data-i18n="v.adapt" data-en="◆ Adapts">◆ Se adaptează</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp6.n" data-en="Sheep">Oaia</h3><span class="sp-no">No. 006</span></div>
+      <p class="latin">Ovis aries</p>
+      <p class="stat" data-i18n="sp6.s" data-en="Wool never stops growing">Lâna nu se oprește din crescut</p>
+      <p class="desc" data-i18n="sp6.d" data-en="Most breeds depend on shearing. In 2004 a runaway merino called Shrek was found in New Zealand after six years in hiding, carrying 27 kg of fleece.">Majoritatea raselor depind de tuns. În 2004, în Noua Zeelandă, a fost găsit un berbec merinos fugar, pe nume Shrek, după șase ani de ascunziș, cu 27 kg de lână pe el.</p>
+      <span class="verdict adapt" data-i18n="v.adapt" data-en="◆ Adapts">◆ Se adaptează</span>
+    </article>
+    <article class="specimen" data-v="gone">
+      <div class="sp-top"><h3 data-i18n="sp7.n" data-en="German cockroach">Gândacul de bucătărie</h3><span class="sp-no">No. 007</span></div>
+      <p class="latin">Blattella germanica</p>
+      <p class="stat" data-i18n="sp7.s" data-en="Tropical by origin">De origine tropicală</p>
+      <p class="desc" data-i18n="sp7.d" data-en="It conquered the cold north by living inside our heated buildings. The first winter without heating wipes it out across the colder half of the world.">A cucerit nordul rece trăind în clădirile noastre încălzite. Prima iarnă fără căldură îl șterge de pe jumătatea mai rece a lumii.</p>
+      <span class="verdict gone" data-i18n="v.gone" data-en="✕ Vanishes">✕ Dispare</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp8.n" data-en="Brown rat">Șobolanul cenușiu</h3><span class="sp-no">No. 008</span></div>
+      <p class="latin">Rattus norvegicus</p>
+      <p class="stat" data-i18n="sp8.s" data-en="Lives on our garbage">Trăiește din gunoiul nostru</p>
+      <p class="desc" data-i18n="sp8.d" data-en="The bins stop filling. Numbers crash, then settle, as rats become ordinary prey again for owls, foxes and hawks moving into the city.">Tomberoanele nu se mai umplu. Numărul lor se prăbușește, apoi se stabilizează, iar șobolanii redevin o pradă obișnuită pentru bufnițele, vulpile și ulii care se mută în oraș.</p>
+      <span class="verdict adapt" data-i18n="v.adapt" data-en="◆ Adapts">◆ Se adaptează</span>
+    </article>
+    <article class="specimen" data-v="gone">
+      <div class="sp-top"><h3 data-i18n="sp9.n" data-en="Bread wheat">Grâul</h3><span class="sp-no">No. 009</span></div>
+      <p class="latin">Triticum aestivum</p>
+      <p class="stat" data-i18n="sp9.s" data-en="≈ 220 million hectares">≈ 220 de milioane de hectare</p>
+      <p class="desc" data-i18n="sp9.d" data-en="We bred its ears to hold on to their grain until harvest, so it can barely sow itself. After a few seasons without ploughing, it loses to the weeds.">L-am selectat astfel încât spicele să-și țină boabele până la recoltare, așa că abia se mai poate semăna singur. După câteva sezoane fără arat, pierde în fața buruienilor.</p>
+      <span class="verdict gone" data-i18n="v.gone" data-en="✕ Vanishes">✕ Dispare</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp10.n" data-en="Grey wolf">Lupul</h3><span class="sp-no">No. 010</span></div>
+      <p class="latin">Canis lupus</p>
+      <p class="stat" data-i18n="sp10.s" data-en="Already returning to Europe">Deja revine în Europa</p>
+      <p class="desc" data-i18n="sp10.d" data-en="With hunting over and deer, boar and feral cattle everywhere, wolves spread across whole continents within decades.">Fără vânătoare și cu cerbi, mistreți și vite sălbăticite peste tot, lupii se răspândesc pe continente întregi în câteva decenii.</p>
+      <span class="verdict thrive" data-i18n="v.thrive" data-en="▲ Thrives">▲ Prosperă</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp11.n" data-en="Atlantic cod">Codul de Atlantic</h3><span class="sp-no">No. 011</span></div>
+      <p class="latin">Gadus morhua</p>
+      <p class="stat" data-i18n="sp11.s" data-en="≈ 90 million t of wild fish caught a year">≈ 90 de milioane de tone de pește sălbatic pescuit pe an</p>
+      <p class="desc" data-i18n="sp11.d" data-en="The nets come up empty for the last time. Many fish stocks rebuild within decades, and the great shoals of the North Atlantic may fill the sea again.">Plasele ies goale pentru ultima dată. Multe populații de pești se refac în câteva decenii, iar marile bancuri din Atlanticul de Nord ar putea umple din nou marea.</p>
+      <span class="verdict thrive" data-i18n="v.thrive" data-en="▲ Thrives">▲ Prosperă</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp12.n" data-en="Migrating songbirds">Păsările cântătoare migratoare</h3><span class="sp-no">No. 012</span></div>
+      <p class="latin">Passeriformes</p>
+      <p class="stat" data-i18n="sp12.s" data-en="Up to 1 billion window deaths a year, US alone&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-5&quot; aria-label=&quot;Source 5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;">Până la 1 miliard de morți în geamuri pe an, doar în SUA<sup class="ref"><a href="#src-5" aria-label="Sursa 5">5</a></sup></p>
+      <p class="desc" data-i18n="sp12.d" data-en="Most migrate at night, and our lit windows lure them into glass. With the lights out, the night migration flies safely again.">Cele mai multe migrează noaptea, iar ferestrele noastre luminate le atrag în sticlă. Cu luminile stinse, migrația de noapte zboară din nou în siguranță.</p>
+      <span class="verdict thrive" data-i18n="v.thrive" data-en="▲ Thrives">▲ Prosperă</span>
+    </article>
+    <article class="specimen" data-v="adapt">
+      <div class="sp-top"><h3 data-i18n="sp13.n" data-en="Honeybee">Albina meliferă</h3><span class="sp-no">No. 013</span></div>
+      <p class="latin">Apis mellifera</p>
+      <p class="stat" data-i18n="sp13.s" data-en="≈ 100 million managed hives">≈ 100 de milioane de stupi îngrijiți</p>
+      <p class="desc" data-i18n="sp13.d" data-en="Without beekeepers, many hives fall to parasitic mites. But thousands of wild bee species boom as the pesticides break down and meadows return.">Fără apicultori, mulți stupi cad pradă acarienilor paraziți. Dar mii de specii de albine sălbatice înfloresc pe măsură ce pesticidele se descompun și pajiștile revin.</p>
+      <span class="verdict adapt" data-i18n="v.adapt" data-en="◆ Adapts">◆ Se adaptează</span>
+    </article>
+    <article class="specimen" data-v="thrive">
+      <div class="sp-top"><h3 data-i18n="sp14.n" data-en="African elephant">Elefantul african</h3><span class="sp-no">No. 014</span></div>
+      <p class="latin">Loxodonta africana</p>
+      <p class="stat" data-i18n="sp14.s" data-en="≈ 415,000 left (2016 estimate)">≈ 415.000 rămași (estimare din 2016)</p>
+      <p class="desc" data-i18n="sp14.d" data-en="No more poaching, and farmland turning back into savanna and forest. They breed slowly, so reclaiming their old range takes a few centuries.">Nu mai există braconaj, iar terenurile agricole redevin savană și pădure. Se înmulțesc încet, așa că le trebuie câteva secole ca să-și recâștige vechiul teritoriu.</p>
+      <span class="verdict thrive" data-i18n="v.thrive" data-en="▲ Thrives">▲ Prosperă</span>
+    </article>
+  </div>
+</section>
+
+<!-- ============ IV. THE COOLING POOLS (nuclear) ============ -->
+<section class="scene" data-scene="nuclear" data-bg="#0a0709">
+  <div class="stage">
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="nuke.alt" data-en="World map of nuclear power sites. All run on backup diesel at first. Most then warm slowly and stay quiet; an illustrative minority holding freshly unloaded fuel turn red as their pools could boil down.">Harta lumii cu centralele nucleare. La început, toate funcționează pe generatoare diesel. Cele mai multe se încălzesc apoi încet și rămân liniștite; o minoritate ilustrativă, cu combustibil scos de curând din reactor, se înroșește, pentru că bazinele lor ar putea seca prin fierbere.</p>
+    <div class="map-hud" aria-hidden="true">
+      <p class="hud-label" data-i18n="nuke.hud" data-en="Nuclear sites, since the blackout">Centrale nucleare, de la pana de curent</p>
+      <p class="hud-value" id="nuke-time"></p>
+      <ul class="nuke-stats" id="nuke-stats"></ul>
+    </div>
+    <p class="map-source" data-i18n="nuke.src" data-en="Which sites fall into which group depends on fuel age, design and backup systems. The split shown is illustrative.">Ce amplasament intră în ce grup depinde de vechimea combustibilului, de proiect și de sistemele de rezervă. Împărțirea de pe hartă e ilustrativă.</p>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="0.0027" data-side="left">
+      <div class="card chapter">
+        <p class="stamp" data-i18n="nuke.s0" data-en="+ seconds">+ câteva secunde</p>
+        <p class="chapter-num">IV</p>
+        <h2 data-i18n="nuke.h" data-en="The cooling pools">Bazinele de răcire</h2>
+        <p data-i18n="nuke.p0" data-en="There are more than 400 nuclear reactors in the world. When the grid collapses they do exactly what they were designed to do. Control rods drop, and within seconds the chain reaction stops.">În lume există peste 400 de reactoare nucleare. Când rețeaua se prăbușește, fac exact ce au fost proiectate să facă. Barele de control coboară, iar în câteva secunde reacția în lanț se oprește.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.019" data-approx data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="nuke.p1" data-en="The fuel keeps making heat anyway. Beside each reactor, in deep pools, sit years of spent fuel rods that are kept under circulating water. Backup diesel generators take over the pumps. Their tanks are typically sized to run for about a week.">Combustibilul continuă totuși să producă căldură. Lângă fiecare reactor, în bazine adânci, stau barele de combustibil uzat din mai mulți ani, ținute sub apă în circulație. Generatoarele diesel de rezervă preiau pompele. Rezervoarele lor sunt de obicei dimensionate pentru aproximativ o săptămână.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.08" data-side="left">
+      <div class="card">
+        <p class="stamp" data-i18n="nuke.s2" data-en="+ weeks to months">+ săptămâni până la luni</p>
+        <p data-i18n="nuke.p2" data-en="What happens next depends on how fresh the fuel is. Rods that left the reactor years ago have cooled so much that air alone could keep them safe.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-6&quot; aria-label=&quot;Source 6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; Rods unloaded in the last months are another matter. Without pumps, their pool could slowly boil down, and if the fuel is uncovered, its zirconium casing could catch fire.">Ce urmează depinde de cât de proaspăt e combustibilul. Barele scoase din reactor cu ani în urmă s-au răcit atât de mult încât doar aerul le-ar putea ține în siguranță.<sup class="ref"><a href="#src-6" aria-label="Sursa 6">6</a></sup> Cele descărcate în ultimele luni sunt altă poveste. Fără pompe, bazinul lor ar putea seca încet prin fierbere, iar dacă barele rămân descoperite, teaca lor de zirconiu ar putea lua foc.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.4" data-tag="scenario" data-side="left">
+      <div class="card">
+        <p class="stamp" data-i18n="nuke.s3" data-en="+ months">+ luni</p>
+        <p data-i18n="nuke.p3" data-en="So the map does not turn uniformly red. Many sites simply go quiet. A minority, those holding hot, freshly unloaded fuel, could become serious accidents with nobody there to stop them. At Romania's Cernavodă, fuel cools in pools for six to ten years and then moves into concrete dry-storage modules that need no electricity at all.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-7&quot; aria-label=&quot;Source 7&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;">Așa că harta nu se înroșește toată. Multe amplasamente pur și simplu amuțesc. O minoritate, cele cu combustibil fierbinte, descărcat de curând, ar putea deveni accidente grave, fără nimeni care să le oprească. La Cernavodă, combustibilul stă în bazine între șase și zece ani, apoi e mutat în module de beton pentru depozitare uscată, care n-au nevoie deloc de electricitate.<sup class="ref"><a href="#src-7" aria-label="Sursa 7">7</a></sup></p>
+      </div>
+    </div>
+    <div class="step" data-t="1" data-side="left">
+      <div class="card">
+        <p class="stamp" data-i18n="nuke.s4" data-en="Chornobyl, since 1986">Cernobîl, din 1986</p>
+        <p data-i18n="nuke.p4" data-en="Where it does go wrong, Chornobyl hints at what follows. Within three decades of the evacuation, its exclusion zone was full of elk, boar, lynx, bison and wolves. The radiation is still written into those wolves' blood and immune systems.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-8&quot; aria-label=&quot;Source 8&quot;&gt;8&lt;/a&gt;&lt;/sup&gt; Our absence simply mattered more.">Acolo unde lucrurile o iau razna, Cernobîlul arată ce urmează. La trei decenii după evacuare, zona de excludere era plină de elani, mistreți, râși, zimbri și lupi. Radiația e încă scrisă în sângele și în sistemul imunitar al acelor lupi.<sup class="ref"><a href="#src-8" aria-label="Sursa 8">8</a></sup> Doar că absența noastră a contat mai mult.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ V. THE SKY CLEARS (night sky) ============ -->
+<section class="scene" data-scene="sky" data-bg="#04060b">
+  <div class="stage">
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="sky.alt" data-en="A night sky over a city skyline. As the orange glow of streetlights fades, thousands of stars and the band of the Milky Way appear. A slider compares light pollution levels on the Bortle scale.">Cer de noapte deasupra unui oraș. Pe măsură ce strălucirea portocalie a felinarelor se stinge, apar mii de stele și banda Căii Lactee. Un cursor compară nivelurile de poluare luminoasă pe scara Bortle.</p>
+    <div class="sky-control">
+      <label for="bortle" class="hud-label" data-i18n="sky.slider" data-en="Light pollution">Poluare luminoasă</label>
+      <input type="range" id="bortle" min="1" max="9" step="0.01" value="9">
+      <p class="hud-sub" id="bortle-label">Bortle 9</p>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="0.02" data-side="right">
+      <div class="card chapter">
+        <p class="stamp" data-i18n="sky.s0" data-en="+ days to weeks">+ zile până la săptămâni</p>
+        <p class="chapter-num">V</p>
+        <h2 data-i18n="sky.h" data-en="The sky clears">Cerul se limpezește</h2>
+        <p data-i18n="sky.p0" data-en="Within days, the last contrails dissolve. Within weeks, rain rinses the soot and sulphate haze out of the air, and horizons move back. In the spring of 2020, when the world briefly slowed down, people in Punjab saw the Himalayas from their rooftops for the first time in decades. This time the mountains stay.">În câteva zile se destramă ultimele dâre de condens. În câteva săptămâni, ploaia spală funinginea și ceața de sulfați din aer, iar orizonturile se îndepărtează. În primăvara lui 2020, când lumea a încetinit pentru scurt timp, oamenii din Punjab au văzut Himalaya de pe acoperișuri pentru prima dată după zeci de ani. De data asta, munții rămân.</p>
+      </div>
+    </div>
+    <div class="step" data-t="0.05" data-side="right">
+      <div class="card">
+        <p class="stamp" data-i18n="sky.s1" data-en="+ weeks">+ săptămâni</p>
+        <p data-i18n="sky.p1" data-en="And the night comes back. Today more than a third of humanity cannot see the Milky Way from home.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-9&quot; aria-label=&quot;Source 9&quot;&gt;9&lt;/a&gt;&lt;/sup&gt; Now it rises again over every city on Earth, for no one. Drag the slider to compare.">Și se întoarce noaptea. Astăzi, peste o treime din omenire nu poate vedea Calea Lactee de acasă.<sup class="ref"><a href="#src-9" aria-label="Sursa 9">9</a></sup> Acum ea răsare din nou deasupra fiecărui oraș de pe Pământ, pentru nimeni. Trage de cursor ca să compari.</p>
+      </div>
+    </div>
+    <div class="step" data-t="10" data-approx data-side="right">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="sky.p2" data-en="There is a cruel twist. That haze was shading us, bouncing sunlight back to space. With it gone, the planet warms by a few more tenths of a degree over roughly a decade,&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-10&quot; aria-label=&quot;Source 10&quot;&gt;10&lt;/a&gt;&lt;/sup&gt; a hidden bill that falls due once nobody is left to pay it.">Aici vine o ironie crudă. Ceața aceea ne umbrea, trimițând lumina soarelui înapoi în spațiu. Fără ea, planeta se mai încălzește cu câteva zecimi de grad în aproximativ un deceniu,<sup class="ref"><a href="#src-10" aria-label="Sursa 10">10</a></sup> o factură ascunsă care devine scadentă când nu mai e nimeni s-o plătească.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VI. THE FOREST MOVES IN (city) ============ -->
+<section class="scene" data-scene="city" data-bg="#070b0a">
+  <div class="stage">
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="city.alt" data-en="An illustrated city street seen over a thousand years: weeds, then broken windows and vines, fires in the wooden houses, rusting cars and leaning towers, a fallen bridge, and finally forested hills with one stone church still standing.">O stradă ilustrată, văzută de-a lungul a o mie de ani: buruieni, apoi geamuri sparte și plante agățătoare, incendii în casele de lemn, mașini ruginite și turnuri înclinate, un pod prăbușit și, în final, dealuri împădurite din care se mai vede o singură biserică de piatră.</p>
+    <div class="city-year" aria-hidden="true"><span data-i18n="city.year" data-en="Year">Anul</span> <b id="city-year"></b></div>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="1" data-approx data-side="left">
+      <div class="card chapter">
+        <p class="stamp"></p>
+        <p class="chapter-num">VI</p>
+        <h2 data-i18n="city.h" data-en="The forest moves in">Pădurea se mută în oraș</h2>
+        <p data-i18n="city.p0" data-en="In the first spring, weeds find the cracks in the pavement. Every crack is a seedbed, and for the first time, nobody comes to pull out what grows there. In cold cities, the first winter freezes the water in the pipes, and the pipes split.">În prima primăvară, buruienile găsesc crăpăturile din asfalt. Fiecare crăpătură e un răsad și, pentru prima dată, nu mai vine nimeni să smulgă ce crește acolo. În orașele reci, prima iarnă îngheață apa din țevi, iar țevile crapă.</p>
+      </div>
+    </div>
+    <div class="step" data-t="4" data-range="1,5" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="city.p1" data-en="Freeze and thaw is a city's oldest enemy. Water seeps into a crack, freezes, grows by nine percent and pries the crack wider. Roofs begin to leak. Once rain gets inside a building, the countdown has started.">Înghețul și dezghețul sunt cel mai vechi dușman al unui oraș. Apa se strecoară într-o fisură, îngheață, crește cu nouă la sută și lărgește fisura. Acoperișurile încep să curgă. Odată ce ploaia intră într-o clădire, numărătoarea inversă a început.</p>
+      </div>
+    </div>
+    <div class="step" data-t="12" data-range="10,20" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="city.p2" data-en="Lightning hits a dry roof, and there is no fire brigade. Fires run through the wooden neighbourhoods, fed by years of dead leaves in the gutters. Their ash enriches the soil. The first trees are now taller than the lamp posts.">Un fulger lovește un acoperiș uscat și nu mai există pompieri. Incendiile străbat cartierele de lemn, hrănite de ani întregi de frunze moarte din jgheaburi. Cenușa lor îmbogățește solul. Primii copaci sunt acum mai înalți decât stâlpii de iluminat.</p>
+      </div>
+    </div>
+    <div class="step" data-t="30" data-range="20,50" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="city.p3" data-en="Inside the concrete, the steel reinforcing bars rust. Rust takes up several times more room than steel, so the bars burst the concrete from the inside. Balconies drop. Facades peel away in slabs.">În interiorul betonului, armăturile de oțel ruginesc. Rugina ocupă de câteva ori mai mult loc decât oțelul, așa că barele sparg betonul din interior. Balcoanele cad. Fațadele se desprind în plăci întregi.</p>
+      </div>
+    </div>
+    <div class="step" data-t="60" data-range="50,100" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="city.p4" data-en="Most wooden houses have collapsed by now. The suburbs go first, because our homes were never built to last without us. Brick chimneys stay standing among the trees, like bookmarks.">Până acum, cele mai multe case de lemn s-au prăbușit. Suburbiile dispar primele, pentru că locuințele noastre n-au fost construite niciodată să reziste fără noi. Coșurile de cărămidă rămân în picioare printre copaci, ca niște semne de carte.</p>
+      </div>
+    </div>
+    <div class="step" data-t="150" data-range="100,300" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="city.p5" data-en="With their windows gone and rain pouring in, steel-framed towers start to buckle. Some fall. Others stand as hollow cliffs where peregrine falcons nest, as they already do today. The streets below are a forest.">Fără ferestre și cu ploaia intrând înăuntru, turnurile cu schelet de oțel încep să se îndoaie. Unele cad. Altele rămân ca niște faleze goale în care își fac cuib șoimii călători, cum fac deja și azi. Străzile de dedesubt sunt o pădure.</p>
+      </div>
+    </div>
+    <div class="step" data-t="300" data-range="200,500" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="city.p6" data-en="The great suspension bridges, unpainted for centuries, drop into the rivers they once crossed. In Panama, the canal has long since silted up, and the two Americas are joined again.">Marile poduri suspendate, nevopsite de secole, cad în râurile peste care treceau. În Panama, canalul s-a colmatat de mult, iar cele două Americi sunt din nou unite.</p>
+      </div>
+    </div>
+    <div class="step" data-t="1000" data-approx data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="city.p7" data-en="After a thousand years, a city is a cluster of wooded hills, oddly straight-edged, with rubble under the moss. Only what was made of stone, glass and very thick concrete still shows through.">După o mie de ani, un oraș e un grup de dealuri împădurite, ciudat de drepte pe margini, cu moloz sub mușchi. Doar ce a fost făcut din piatră, sticlă și beton foarte gros mai iese la iveală.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VII. CLOSER TO HOME: ROMANIA ============ -->
+<section class="scene" data-scene="romania" data-bg="#080b0a">
+  <div class="stage">
+    <canvas class="fill ro-forest" aria-hidden="true"></canvas>
+    <svg class="fill ro-svg" id="ro-svg" role="group" aria-label="Harta României. Marcajele duc la povestea fiecărui loc." data-en-aria="Map of Romania. Markers jump to each place's story." data-i18n-aria="aria.romap"></svg>
+    <p class="sr-only" data-i18n="ro.alt" data-en="Map of Romania and its neighbours. Forest cover spreads outward from the Carpathians, the south-eastern plains turn back to steppe, and reed beds grow in the Danube Delta.">Harta României și a vecinilor ei. Pădurea se extinde din Carpați, câmpiile din sud-est redevin stepă, iar în Delta Dunării se întind stufărișurile.</p>
+    <div class="map-hud ro-hud" aria-hidden="true">
+      <p class="hud-label" data-i18n="ro.hud" data-en="Forest cover in Romania (illustrative)">Suprafața împădurită a României (ilustrativ)</p>
+      <p class="hud-value" id="ro-forest"></p>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="5" data-side="right" data-marker="">
+      <div class="card chapter">
+        <p class="chapter-num">VII</p>
+        <h2 data-i18n="ro.h" data-en="Closer to home">Aproape de casă</h2>
+        <p data-i18n="ro.p0" data-en="Romania is a good place to watch the world heal. It already has some of Europe's wildest mountains, one of its great river deltas, and a glimpse, just across the border, of what happens when people leave. Tap a marker, or keep scrolling.">România e un loc bun din care să privești lumea vindecându-se. Are deja unii dintre cei mai sălbatici munți ai Europei, una dintre marile delte ale continentului și, chiar dincolo de graniță, o imagine a ce se întâmplă când oamenii pleacă. Atinge un marcaj sau derulează mai departe.</p>
+      </div>
+    </div>
+    <div class="step" data-t="6" data-side="right" data-marker="chernobyl">
+      <div class="card">
+        <p class="stamp" data-i18n="ro.chern.s" data-en="Since 1986">Din 1986</p>
+        <h3 data-i18n="ro.chern.h" data-en="Chornobyl, the rehearsal">Cernobîl, repetiția generală</h3>
+        <p data-i18n="ro.chern.p" data-en="The exclusion zone straddles Ukraine and Belarus: more than 4,000 square kilometres almost empty of people for four decades. In its Belarusian half, researchers counting animals found elk, deer and boar as common as in nature reserves, and wolves more than seven times as numerous.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-11&quot; aria-label=&quot;Source 11&quot;&gt;11&lt;/a&gt;&lt;/sup&gt; It is the closest thing we have to a preview of this story.">Zona de excludere se întinde peste Ucraina și Belarus: peste 4.000 de kilometri pătrați aproape goi de oameni de patru decenii. În partea belarusă, cercetătorii care au numărat animalele au găsit elani, căprioare și mistreți la fel de numeroși ca în rezervațiile naturale, iar lupi de peste șapte ori mai mulți.<sup class="ref"><a href="#src-11" aria-label="Sursa 11">11</a></sup> E cel mai apropiat lucru pe care îl avem de o avanpremieră a acestei povești.</p>
+      </div>
+    </div>
+    <div class="step" data-t="10" data-range="10,50" data-side="right" data-marker="carpathians">
+      <div class="card">
+        <p class="stamp"></p>
+        <h3 data-i18n="ro.carp.h" data-en="The Carpathians">Carpații</h3>
+        <p data-i18n="ro.carp.p" data-en="A genetic survey of some 24,000 samples put Romania's brown bears at between about 10,650 and 12,800 in 2025, Europe's largest population outside Russia.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-12&quot; aria-label=&quot;Source 12&quot;&gt;12&lt;/a&gt;&lt;/sup&gt; Wolves and lynx share the forest with them. With the guns silent and the orchards of abandoned villages dropping fruit, the bears move downhill. They already visit the edges of Brașov. Within decades, its streets belong to them.">Un studiu genetic pe aproximativ 24.000 de probe a estimat în 2025 că în România trăiesc între circa 10.650 și 12.800 de urși bruni, cea mai mare populație din Europa în afara Rusiei.<sup class="ref"><a href="#src-12" aria-label="Sursa 12">12</a></sup> Lupii și râșii împart pădurea cu ei. Cu armele tăcute și cu livezile satelor părăsite pline de fructe căzute, urșii coboară. Deja vizitează marginile Brașovului. În câteva decenii, străzile lui sunt ale lor.</p>
+      </div>
+    </div>
+    <div class="step" data-t="20" data-range="5,100" data-side="right" data-marker="transfagarasan">
+      <div class="card">
+        <p class="stamp"></p>
+        <h3 data-i18n="ro.transf.h" data-en="Transfăgărășan">Transfăgărășanul</h3>
+        <p data-i18n="ro.transf.p" data-en="Nobody clears the road in spring. Within a few winters, rockfalls and avalanches cut it. Within a century, the most famous hairpins in Europe are a faint zig-zag of young forest on the mountainside.">Nimeni nu mai deszăpezește drumul primăvara. În câteva ierni, căderile de pietre și avalanșele îl taie. Într-un secol, cele mai faimoase serpentine din Europa sunt doar un zigzag șters de pădure tânără pe coasta muntelui.</p>
+      </div>
+    </div>
+    <div class="step" data-t="30" data-range="20,50" data-side="right" data-marker="delta">
+      <div class="card">
+        <p class="stamp"></p>
+        <h3 data-i18n="ro.delta.h" data-en="The Danube Delta">Delta Dunării</h3>
+        <p data-i18n="ro.delta.p" data-en="From the 1960s to the 80s, dykes turned large parts of the delta into farms and fish ponds. Unmaintained, those dykes fail one flood at a time, and the river takes its marshes back. Europe's largest reed beds spread, and pelicans, among more than 300 bird species, return to nest in them.">Între anii ’60 și ’80, digurile au transformat mari părți din deltă în terenuri agricole și amenajări piscicole. Neîntreținute, digurile cedează, o viitură după alta, iar fluviul își ia înapoi mlaștinile. Cea mai mare întindere de stuf din Europa se extinde, iar pelicanii, alături de peste 300 de specii de păsări, revin să cuibărească în ea.</p>
+      </div>
+    </div>
+    <div class="step" data-t="50" data-range="20,100" data-side="right" data-marker="baragan">
+      <div class="card">
+        <p class="stamp"></p>
+        <h3 data-i18n="ro.baragan.h" data-en="The Bărăgan">Bărăganul</h3>
+        <p data-i18n="ro.baragan.p" data-en="Not everything turns into forest. The plains of the south-east were steppe long before the plough, and they go back to grass. Horses from abandoned farms, gone wild, graze where the wheat was.">Nu totul devine pădure. Câmpiile din sud-est erau stepă cu mult înainte de plug și se întorc la iarbă. Caii scăpați din fermele părăsite, sălbăticiți, pasc acolo unde era grâul.</p>
+      </div>
+    </div>
+    <div class="step" data-t="150" data-range="100,500" data-side="right" data-marker="irongates">
+      <div class="card">
+        <p class="stamp"></p>
+        <h3 data-i18n="ro.iron.h" data-en="The Iron Gates">Porțile de Fier</h3>
+        <p data-i18n="ro.iron.p" data-en="The Porțile de Fier dam, one of Europe's largest hydropower plants, might keep a few lights burning longer than almost anywhere in the Balkans. The dam itself should stand for centuries, while its lake slowly fills with the silt of half a continent.">Barajul de la Porțile de Fier, una dintre cele mai mari hidrocentrale ale Europei, ar putea ține câteva lumini aprinse mai mult decât aproape oriunde în Balcani. Barajul în sine ar trebui să reziste secole, în timp ce lacul său se umple încet cu mâlul a jumătate de continent.</p>
+      </div>
+    </div>
+    <div class="step" data-t="1000" data-approx data-side="right" data-marker="bucharest">
+      <div class="card">
+        <p class="stamp"></p>
+        <h3 data-i18n="ro.buc.h" data-en="Bucharest">București</h3>
+        <p data-i18n="ro.buc.p" data-en="The Palace of the Parliament weighs around four million tonnes, one of the heaviest buildings on Earth. Long after the apartment blocks around it have fallen, it will still be there. After a thousand years it is a great wooded hill in the middle of a forest, with marble underneath.">Palatul Parlamentului cântărește în jur de patru milioane de tone, una dintre cele mai grele clădiri de pe Pământ. Mult după ce blocurile din jur se vor fi prăbușit, el va fi încă acolo. După o mie de ani, e un deal mare și împădurit în mijlocul unei păduri, cu marmură dedesubt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIII. WHAT LASTS (longevity chart) ============ -->
+<section class="flow" id="lasts" data-bg="#0b0b0a">
+  <div class="flow-head" data-t="500">
+    <p class="chapter-num">VIII</p>
+    <h2 data-i18n="lasts.h" data-en="What lasts">Ce rămâne</h2>
+    <p class="flow-lede" data-i18n="lasts.p" data-en="Everything we make is slowly returning to the ground. Some of it just takes much longer. Drag the slider to travel forward in time and see what is still standing. The bars show the rough spread of estimates, because nobody has been able to check.">Tot ce facem se întoarce încet în pământ. Doar că unele lucruri durează mult mai mult. Trage de cursor ca să călătorești în timp și să vezi ce mai stă în picioare. Barele arată cât de mult diferă estimările, pentru că nimeni n-a putut verifica.</p>
+  </div>
+  <div class="lasts-control">
+    <label for="lasts-year" class="hud-label" data-i18n="lasts.slider" data-en="Years after us">Ani după noi</label>
+    <output id="lasts-out" for="lasts-year">1,000</output>
+    <input type="range" id="lasts-year" min="0" max="9" step="0.01" value="3">
+  </div>
+  <div class="lasts-chart" id="lasts-chart" aria-hidden="true"></div>
+  <p class="lasts-summary" id="lasts-summary" aria-live="polite"></p>
+  <details class="lasts-table">
+    <summary data-i18n="lasts.table" data-en="Show the estimates as a table">Arată estimările ca tabel</summary>
+    <div class="table-wrap">
+      <table id="lasts-data">
+        <thead><tr><th scope="col" data-i18n="lasts.c1" data-en="Thing">Lucrul</th><th scope="col" data-i18n="lasts.c2" data-en="Rough lifespan">Durată aproximativă</th><th scope="col" data-i18n="lasts.c3" data-en="Why">De ce</th></tr></thead>
+        <tbody>
+        <tr data-min="5" data-max="60"><th scope="row" data-i18n="lt1.n" data-en="Books in an abandoned library">Cărțile dintr-o bibliotecă părăsită</th><td class="num" data-i18n="lt1.r" data-en="5–60 years">5–60 de ani</td><td data-i18n="lt1.x" data-en="Roofs leak, mould and insects do the rest.">Acoperișurile curg, mucegaiul și insectele fac restul.</td></tr>
+        <tr data-min="20" data-max="150"><th scope="row" data-i18n="lt2.n" data-en="Asphalt roads">Drumurile asfaltate</th><td class="num" data-i18n="lt2.r" data-en="20–150 years">20–150 de ani</td><td data-i18n="lt2.x" data-en="Split by frost and roots, then buried under soil.">Crăpate de îngheț și rădăcini, apoi îngropate sub pământ.</td></tr>
+        <tr data-min="40" data-max="150"><th scope="row" data-i18n="lt3.n" data-en="Wooden houses">Casele de lemn</th><td class="num" data-i18n="lt3.r" data-en="40–150 years">40–150 de ani</td><td data-i18n="lt3.x" data-en="Rot, termites and fire. The suburbs go first.">Putregai, termite și foc. Suburbiile dispar primele.</td></tr>
+        <tr data-min="50" data-max="300"><th scope="row" data-i18n="lt4.n" data-en="Cars">Mașinile</th><td class="num" data-i18n="lt4.r" data-en="50–300 years">50–300 de ani</td><td data-i18n="lt4.x" data-en="Rusted to lumps, then to red stains in the soil.">Ruginite până la grămezi, apoi până la pete roșii în pământ.</td></tr>
+        <tr data-min="100" data-max="500"><th scope="row" data-i18n="lt5.n" data-en="Steel-frame skyscrapers">Zgârie-norii cu schelet de oțel</th><td class="num" data-i18n="lt5.r" data-en="100–500 years">100–500 de ani</td><td data-i18n="lt5.x" data-en="Water gets in, the steel rusts, the joints fail.">Apa intră, oțelul ruginește, îmbinările cedează.</td></tr>
+        <tr data-min="100" data-max="500"><th scope="row" data-i18n="lt6.n" data-en="Aluminium cans">Dozele de aluminiu</th><td class="num" data-i18n="lt6.r" data-en="100–500 years">100–500 de ani</td><td data-i18n="lt6.x" data-en="Slowly oxidised, faster in salty or acidic soil.">Oxidate încet, mai repede în sol sărat sau acid.</td></tr>
+        <tr data-min="150" data-max="600"><th scope="row" data-i18n="lt7.n" data-en="Suspension bridges">Podurile suspendate</th><td class="num" data-i18n="lt7.r" data-en="150–600 years">150–600 de ani</td><td data-i18n="lt7.x" data-en="Unpainted cables and bolts corrode until the deck drops.">Cablurile și șuruburile nevopsite ruginesc până când tablierul cade.</td></tr>
+        <tr data-min="400" data-max="2000"><th scope="row" data-i18n="lt8.n" data-en="Plastic bottles">Sticlele de plastic</th><td class="num" data-i18n="lt8.r" data-en="400–2,000 years">400–2.000 de ani</td><td data-i18n="lt8.x" data-en="Sunlight breaks them into ever smaller fragments that linger.">Lumina le rupe în fragmente tot mai mici, care rămân.</td></tr>
+        <tr data-min="1000" data-max="10000"><th scope="row" data-i18n="lt9.n" data-en="Great concrete dams">Marile baraje de beton</th><td class="num" data-i18n="lt9.r" data-en="1,000–10,000 years">1.000–10.000 de ani</td><td data-i18n="lt9.x" data-en="Massive enough to stand for millennia as their lakes silt up.">Destul de masive încât să reziste milenii, în timp ce lacurile lor se umplu cu mâl.</td></tr>
+        <tr data-min="10000" data-max="1000000"><th scope="row" data-i18n="lt10.n" data-en="Glass bottles">Sticlele de sticlă</th><td class="num" data-i18n="lt10.r" data-en="10,000–1 million years">10.000–1 mil. de ani</td><td data-i18n="lt10.x" data-en="Chemically tough. Buried, they can last almost indefinitely.">Rezistente chimic. Îngropate, pot dura aproape la nesfârșit.</td></tr>
+        <tr data-min="24100" data-max="241000"><th scope="row" data-i18n="lt11.n" data-en="Plutonium-239">Plutoniul-239</th><td class="num" data-i18n="lt11.r" data-en="24,100–241,000 years">24.100–241.000 de ani</td><td data-i18n="lt11.x" data-en="Half gone after 24,100 years, a thousandth left after ten half-lives.">Jumătate dispare în 24.100 de ani, o miime rămâne după zece timpi de înjumătățire.</td></tr>
+        <tr data-min="100000" data-max="500000"><th scope="row" data-i18n="lt12.n" data-en="The last of our extra CO₂">Ultimul surplus de CO₂</th><td class="num" data-i18n="lt12.r" data-en="100,000–500,000 years">100.000–500.000 de ani</td><td data-i18n="lt12.x" data-en="Removed by the weathering of rock, the slowest cleaner there is.">Îndepărtat de alterarea rocilor, cel mai lent „curățitor” care există.</td></tr>
+        <tr data-min="100000" data-max="1000000"><th scope="row" data-i18n="lt13.n" data-en="The Great Pyramid">Marea Piramidă</th><td class="num" data-i18n="lt13.r" data-en="100,000–1 million years">100.000–1 mil. de ani</td><td data-i18n="lt13.x" data-en="Dry climate, huge stone blocks. Sand wears it down slowly.">Climă uscată, blocuri uriașe de piatră. Nisipul o tocește încet.</td></tr>
+        <tr data-min="100000" data-max="2000000"><th scope="row" data-i18n="lt14.n" data-en="Faces of Mount Rushmore">Fețele de pe Muntele Rushmore</th><td class="num" data-i18n="lt14.r" data-en="100,000–2 million years">100.000–2 mil. de ani</td><td data-i18n="lt14.x" data-en="At the Park Service’s estimate of 2.5 cm per 10,000 years. Frost in unsealed cracks could be faster.">După estimarea administrației parcului, 2,5 cm la 10.000 de ani. Înghețul în fisurile nesigilate ar putea grăbi totul.</td></tr>
+        <tr data-min="100000" data-max="10000000"><th scope="row" data-i18n="lt15.n" data-en="Bronze statues">Statuile de bronz</th><td class="num" data-i18n="lt15.r" data-en="100,000–10 million years">100.000–10 mil. de ani</td><td data-i18n="lt15.x" data-en="A green patina protects them. In sediment they could last millions of years.">O patină verde le protejează. În sedimente ar putea dura milioane de ani.</td></tr>
+        <tr data-min="1000000" data-max="100000000"><th scope="row" data-i18n="lt16.n" data-en="Footprints on the Moon">Urmele de pași de pe Lună</th><td class="num" data-i18n="lt16.r" data-en="1 million–100 million years">1 mil.–100 mil. de ani</td><td data-i18n="lt16.x" data-en="No wind, no rain. Only tiny meteorites slowly blur them.">Fără vânt, fără ploaie. Doar micrometeoriții le estompează încet.</td></tr>
+        <tr data-min="1000000" data-max="100000000"><th scope="row" data-i18n="lt17.n" data-en="Satellites in high orbit">Sateliții de pe orbite înalte</th><td class="num" data-i18n="lt17.r" data-en="1 million–100 million years">1 mil.–100 mil. de ani</td><td data-i18n="lt17.x" data-en="Geostationary satellites stay up for millions of years.">Sateliții geostaționari rămân pe orbită milioane de ani.</td></tr>
+        <tr data-min="1000000" data-max="1000000000"><th scope="row" data-i18n="lt18.n" data-en="Our layer in the rock">Stratul nostru din rocă</th><td class="num" data-i18n="lt18.r" data-en="1 million–1 billion years">1 mil.–1 mld. de ani</td><td data-i18n="lt18.x" data-en="Concrete, aluminium, plastic films, odd isotopes: a permanent signature.">Beton, aluminiu, pelicule de plastic, izotopi ciudați: o semnătură permanentă.</td></tr>
+        <tr data-min="500000000" data-max="5000000000"><th scope="row" data-i18n="lt19.n" data-en="Voyager’s golden record">Discul de aur al sondei Voyager</th><td class="num" data-i18n="lt19.r" data-en="500 million–5 billion years">500 mil.–5 mld. de ani</td><td data-i18n="lt19.x" data-en="Designed to last a billion years in interstellar space.">Proiectat să reziste un miliard de ani în spațiul interstelar.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+</section>
+
+<!-- ============ IX. THE AIR REMEMBERS (CO2) ============ -->
+<section class="scene" data-scene="co2" data-bg="#080a0c">
+  <div class="stage">
+    <div class="co2-wrap">
+      <p class="hud-label" data-i18n="co2.title" data-en="Carbon dioxide in the air, parts per million · illustrative model">Dioxid de carbon în aer, părți per milion · model ilustrativ</p>
+      <div class="co2-chart" id="co2-chart" aria-hidden="true"></div>
+      <p class="sr-only" data-i18n="co2.alt" data-en="Line chart on a logarithmic time scale. Carbon dioxide starts at about 428 ppm, falls to roughly 390 after a century and about 360 after a thousand years, then declines slowly to the pre-industrial 280 ppm over several hundred thousand years. A shaded band shows the spread.">Grafic pe o scară logaritmică a timpului. Dioxidul de carbon pornește de la aproximativ 428 ppm, scade la circa 390 după un secol și la circa 360 după o mie de ani, apoi coboară încet până la 280 ppm, nivelul preindustrial, în câteva sute de mii de ani. O bandă umbrită arată incertitudinea.</p>
+      <p class="co2-note" data-i18n="co2.note" data-en="Not a forecast. The curve adds up decay processes (ocean uptake, carbonate dissolution, rock weathering) with the shape and timescales described by Archer et al. (2009); the band shows how much the lingering fraction varies between models.">Nu e o prognoză. Curba însumează procese lente (preluarea de către ocean, dizolvarea carbonaților, alterarea rocilor), cu forma și scările de timp descrise de Archer și colaboratorii (2009); banda arată cât de mult variază între modele partea care rămâne în aer.</p>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="1" data-side="left">
+      <div class="card chapter">
+        <p class="stamp" data-i18n="co2.s0" data-en="The day we vanish">Ziua în care dispărem</p>
+        <p class="chapter-num">IX</p>
+        <h2 data-i18n="co2.h" data-en="The air remembers">Aerul își amintește</h2>
+        <p data-i18n="co2.p0" data-en="On the day we vanish, the air holds about 428 parts per million of carbon dioxide, NOAA's global estimate for September 2026,&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-13&quot; aria-label=&quot;Source 13&quot;&gt;13&lt;/a&gt;&lt;/sup&gt; up from 280 before the industrial age. The smokestacks go cold, but the carbon is already up there.">În ziua în care dispărem, aerul conține aproximativ 428 de părți per milion de dioxid de carbon, estimarea globală NOAA pentru septembrie 2026,<sup class="ref"><a href="#src-13" aria-label="Sursa 13">13</a></sup> față de 280 înainte de epoca industrială. Coșurile de fum se răcesc, dar carbonul e deja acolo sus.</p>
+      </div>
+    </div>
+    <div class="step" data-t="100" data-approx data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="co2.p1" data-en="The oceans and new forests start drinking it back, quickly at first, then slowly. A century on, the level is probably still higher than at any time in the two million years before us.">Oceanele și pădurile noi încep să-l absoarbă înapoi, repede la început, apoi tot mai încet. După un secol, nivelul e probabil încă mai mare decât în oricare moment din cele două milioane de ani dinaintea noastră.</p>
+      </div>
+    </div>
+    <div class="step" data-t="1000" data-range="200,2000" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="co2.p2" data-en="Once the oceans have had their fill, somewhere between a fifth and a third of our carbon is still in the air,&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-14&quot; aria-label=&quot;Source 14&quot;&gt;14&lt;/a&gt;&lt;/sup&gt; and the planet stays warmer than in 1850. Ice sheets keep melting for centuries, and the seas keep rising for thousands of years.">După ce oceanele s-au săturat, între o cincime și o treime din carbonul nostru e încă în aer,<sup class="ref"><a href="#src-14" aria-label="Sursa 14">14</a></sup> iar planeta rămâne mai caldă decât în 1850. Calotele glaciare continuă să se topească secole la rând, iar mările continuă să crească mii de ani.</p>
+      </div>
+    </div>
+    <div class="step" data-t="200000" data-range="100000,500000" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="co2.p3" data-en="The last of it is removed by rain, slowly dissolving rock and washing the carbon into the sea, where it becomes limestone. That takes hundreds of thousands of years. Our exhaust, it turns out, is one of the longest-lasting things we left behind.">Ultima parte e îndepărtată de ploaie, care dizolvă încet rocile și duce carbonul în mare, unde devine calcar. Asta durează sute de mii de ani. Fumul nostru, se pare, e unul dintre cele mai durabile lucruri pe care le-am lăsat în urmă.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ X. STONE AND ICE (ice globe) ============ -->
+<section class="scene" data-scene="ice" data-bg="#070a0e">
+  <div class="stage">
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <p class="sr-only" data-i18n="ice.alt" data-en="A globe centred on the North Atlantic. In one scenario for the next ice age, ice sheets spread from the Arctic over northern North America and Europe, covering about 160 large cities, while Bucharest stays south of the ice.">Un glob centrat pe Atlanticul de Nord. Într-un scenariu pentru următoarea glaciațiune, calotele de gheață se întind din Arctica peste nordul Americii de Nord și al Europei, acoperind aproximativ 160 de orașe mari, în timp ce Bucureștiul rămâne la sud de gheață.</p>
+    <div class="map-hud" aria-hidden="true">
+      <p class="hud-label" data-i18n="ice.hud" data-en="Cities under the ice · scenario">Orașe sub gheață · scenariu</p>
+      <p class="hud-value" id="ice-count"></p>
+      <p class="hud-sub" id="ice-names"></p>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="10000" data-approx data-side="right">
+      <div class="card chapter">
+        <p class="stamp"></p>
+        <p class="chapter-num">X</p>
+        <h2 data-i18n="ice.h" data-en="Stone and ice">Piatră și gheață</h2>
+        <p data-i18n="ice.p0" data-en="Ten thousand years is about the time since the first farmers. It is enough to erase almost everything we built. The Great Pyramid probably still stands, a little blunter. Stretches of the Great Wall survive as a line of low ridges across the hills.">Zece mii de ani înseamnă cam timpul scurs de la primii agricultori. E destul ca să șteargă aproape tot ce am construit. Marea Piramidă probabil stă încă în picioare, puțin mai tocită. Porțiuni din Marele Zid supraviețuiesc ca un șir de coame joase peste dealuri.</p>
+      </div>
+    </div>
+    <div class="step" data-t="24100" data-exact data-side="right">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="ice.p1" data-en="By now, half of the plutonium-239 that existed on the day we vanished has turned into uranium. Wait another 24,100 years and half of what is left goes the same way. The planet is rid of it the slow way, one halving at a time.">Până acum, jumătate din plutoniul-239 care exista în ziua dispariției noastre s-a transformat în uraniu. Mai așteaptă 24.100 de ani și jumătate din ce a rămas o ia pe același drum. Planeta scapă de el pe calea cea lentă, câte o înjumătățire pe rând.</p>
+      </div>
+    </div>
+    <div class="step" data-t="100000" data-range="50000,150000" data-tag="scenario" data-side="right">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="ice.p2" data-en="Without us, this warm spell would probably have lasted about another 50,000 years anyway. Our carbon stretches it further: in one model, 1,000 to 1,500 billion tonnes of emitted carbon postpone the next ice age by at least 100,000 years.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-15&quot; aria-label=&quot;Source 15&quot;&gt;15&lt;/a&gt;&lt;/sup&gt; We had released some 740 by the day we vanished.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-16&quot; aria-label=&quot;Source 16&quot;&gt;16&lt;/a&gt;&lt;/sup&gt; But the ice is patient. If it grows like the last one, it will grind Chicago, Toronto, Stockholm and Berlin into gravel. Bucharest, far to the south, is spared.">Fără noi, perioada caldă de acum ar fi durat probabil oricum încă vreo 50.000 de ani. Carbonul nostru o prelungește: într-un model, 1.000 până la 1.500 de miliarde de tone de carbon emis amână următoarea glaciațiune cu cel puțin 100.000 de ani.<sup class="ref"><a href="#src-15" aria-label="Sursa 15">15</a></sup> În ziua în care am dispărut, eliberaserăm în jur de 740.<sup class="ref"><a href="#src-16" aria-label="Sursa 16">16</a></sup> Dar gheața are răbdare. Dacă va crește ca ultima dată, va rade Chicago, Toronto, Stockholm și Berlin, prefăcându-le în pietriș. Bucureștiul, departe în sud, scapă.</p>
+      </div>
+    </div>
+    <div class="step" data-t="1000000" data-approx data-side="right">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="ice.p3" data-en="The Park Service estimates that Mount Rushmore's granite wears away about 2.5 cm every ten thousand years.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-17&quot; aria-label=&quot;Source 17&quot;&gt;17&lt;/a&gt;&lt;/sup&gt; At that rate the faces would still be recognisable after a million years, unless frost gets into the cracks that nobody seals any more. Most of today's species are probably still around. New ones are appearing on islands.">Administrația parcului estimează că granitul de pe Muntele Rushmore se erodează cu aproximativ 2,5 cm la fiecare zece mii de ani.<sup class="ref"><a href="#src-17" aria-label="Sursa 17">17</a></sup> În ritmul acesta, fețele s-ar recunoaște și după un milion de ani, dacă înghețul nu intră mai devreme în fisurile pe care nu le mai sigilează nimeni. Majoritatea speciilor de azi probabil încă există. Pe insule apar specii noi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ XI. A LINE IN THE ROCK (strata) ============ -->
+<section class="scene" data-scene="strata" data-bg="#0e0c0a">
+  <div class="stage">
+    <canvas class="fill" aria-hidden="true"></canvas>
+    <div class="tooltip" id="strata-tip" hidden></div>
+    <div class="strata-scale" id="strata-scale" aria-hidden="true"></div>
+    <ol class="strata-key" id="strata-key" aria-label="Straturi, de sus în jos" data-en-aria="Layers, from top to bottom" data-i18n-aria="aria.strata">
+      <li data-kind="future" data-i18n="strata.k1" data-en="Rock laid down after us">Rocă depusă după noi</li>
+      <li data-kind="human" data-i18n="strata.k2" data-en="Our layer">Stratul nostru</li>
+      <li data-kind="holocene" data-i18n="strata.k3" data-en="The age of farmers">Epoca agricultorilor</li>
+      <li data-kind="pleisto" data-i18n="strata.k4" data-en="Ice-age gravels">Pietrișuri glaciare</li>
+      <li data-kind="older" data-i18n="strata.k5" data-en="The world before">Lumea de dinainte</li>
+    </ol>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="2000000" data-range="1000000,10000000" data-side="left">
+      <div class="card chapter">
+        <p class="stamp"></p>
+        <p class="chapter-num">XI</p>
+        <h2 data-i18n="strata.h" data-en="A line in the rock">O linie în piatră</h2>
+        <p data-i18n="strata.p0" data-en="The raw material of that rock is already here. Around 2020, the concrete, asphalt, brick, metal, glass and plastic we had made reached roughly 1.1 trillion tonnes, which by one careful accounting outweighed all life on Earth.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-18&quot; aria-label=&quot;Source 18&quot;&gt;18&lt;/a&gt;&lt;/sup&gt; We were adding about 30 billion tonnes more every year.">Materia primă a acelei roci e deja aici. Pe la 2020, betonul, asfaltul, cărămida, metalul, sticla și plasticul pe care le produseserăm ajunseseră la aproximativ 1.100 de miliarde de tone, adică, după o socoteală atentă, mai mult decât toată viața de pe Pământ.<sup class="ref"><a href="#src-18" aria-label="Sursa 18">18</a></sup> Și adăugam cam 30 de miliarde de tone în fiecare an.</p>
+      </div>
+    </div>
+    <div class="step" data-t="8000000" data-range="1000000,10000000" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="strata.p1" data-en="Buried and squeezed, it becomes rock. Concrete would look like an odd conglomerate. Aluminium, which nature almost never makes pure, could survive as glinting flecks. Some plastics may flatten into thin films of carbon, the way fossil leaves do.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-19&quot; aria-label=&quot;Source 19&quot;&gt;19&lt;/a&gt;&lt;/sup&gt;">Îngropate și presate, devin rocă. Betonul ar arăta ca un conglomerat ciudat. Aluminiul, pe care natura aproape niciodată nu-l produce pur, ar putea supraviețui ca niște fulgi strălucitori. Unele materiale plastice s-ar putea turti în pelicule subțiri de carbon, așa cum se întâmplă cu frunzele fosile.<sup class="ref"><a href="#src-19" aria-label="Sursa 19">19</a></sup></p>
+      </div>
+    </div>
+    <div class="step" data-t="30000000" data-range="10000000,100000000" data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="strata.p2" data-en="A geologist of the far future might find a band only centimetres thick across open country, and metres thick under old cities and landfills. It would hold strange minerals, carbon with an unmistakable isotope fingerprint, and bones, an enormous number of chicken bones.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-20&quot; aria-label=&quot;Source 20&quot;&gt;20&lt;/a&gt;&lt;/sup&gt; Hover or tap the rock to read its layers.">Un geolog din viitorul îndepărtat ar putea găsi o bandă groasă de doar câțiva centimetri în câmp deschis și de câțiva metri sub vechile orașe și gropi de gunoi. Ar conține minerale ciudate, carbon cu o amprentă izotopică inconfundabilă și oase, un număr uriaș de oase de pui.<sup class="ref"><a href="#src-20" aria-label="Sursa 20">20</a></sup> Treci cu mouse-ul sau atinge roca pentru a citi straturile.</p>
+      </div>
+    </div>
+    <div class="step" data-t="100000000" data-approx data-side="left">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="strata.p3" data-en="Life will long since have rebuilt its variety. After the great extinctions of the past, including the asteroid, that took on the order of ten million years.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-21&quot; aria-label=&quot;Source 21&quot;&gt;21&lt;/a&gt;&lt;/sup&gt; The creatures of that world will walk over the line without knowing what it means.">Viața își va fi refăcut de mult varietatea. După marile extincții din trecut, inclusiv cea a asteroidului, asta a durat în jur de zece milioane de ani.<sup class="ref"><a href="#src-21" aria-label="Sursa 21">21</a></sup> Creaturile acelei lumi vor călca peste linie fără să știe ce înseamnă.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ XII. THE LAST MESSAGE (voyager) ============ -->
+<section class="scene" data-scene="voyager" data-bg="#020306">
+  <div class="stage">
+    <canvas class="fill" aria-hidden="true"></canvas>
+  </div>
+  <div class="steps">
+    <div class="step" data-t="300000000" data-side="center">
+      <div class="card chapter">
+        <p class="stamp" data-i18n="voy.s0" data-en="Already on its way">Deja pe drum</p>
+        <p class="chapter-num">XII</p>
+        <h2 data-i18n="voy.h" data-en="The last message">Ultimul mesaj</h2>
+        <p data-i18n="voy.p0" data-en="One thing we made may outlast life on Earth itself. Two small spacecraft, Voyager 1 and 2, are more than 20 billion kilometres away and still going. Bolted to each is a gold-plated record of Earth: rain, a heartbeat, a kiss, greetings in 55 languages, Bach and Chuck Berry.">Un lucru făcut de noi ar putea trăi mai mult decât viața de pe Pământ. Două nave spațiale mici, Voyager 1 și 2, sunt la peste 20 de miliarde de kilometri depărtare și merg mai departe. Pe fiecare e prins un disc placat cu aur care poartă Pământul: ploaie, bătăi de inimă, un sărut, salutări în 55 de limbi, Bach și Chuck Berry.</p>
+      </div>
+    </div>
+    <div class="step" data-t="1000000000" data-approx data-side="center">
+      <div class="card">
+        <p class="stamp"></p>
+        <p data-i18n="voy.p1" data-en="Its makers expected the record to survive for more than a billion years.&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-22&quot; aria-label=&quot;Source 22&quot;&gt;22&lt;/a&gt;&lt;/sup&gt; Around then, a slowly brightening Sun is expected to start boiling Earth's oceans away. The record will still be drifting between the stars, playing to no one, a letter with no return address.">Creatorii lui se așteptau ca discul să reziste mai mult de un miliard de ani.<sup class="ref"><a href="#src-22" aria-label="Sursa 22">22</a></sup> Cam atunci, Soarele, tot mai strălucitor, ar trebui să înceapă să fiarbă oceanele Pământului. Discul va pluti în continuare printre stele, cântând pentru nimeni, o scrisoare fără adresa expeditorului.</p>
+      </div>
+    </div>
+    <div class="step final" data-t="1000000000" data-side="center">
+      <div class="card coda">
+        <p data-i18n="voy.p2" data-en="Earth doesn't need us. It recovered from the asteroid and from the ice, and it will recover from us. But it will remember us for a long time: in a line in the rock, in the air for a hundred thousand years, in a golden record among the stars.">Pământul nu are nevoie de noi. S-a refăcut după asteroid și după gheață și se va reface și după noi. Dar își va aminti de noi multă vreme: într-o linie în piatră, în aer, timp de o sută de mii de ani, într-un disc de aur printre stele.</p>
+        <p class="coda-q" data-i18n="voy.p3" data-en="So the thought experiment leaves one question, and it is about now. What would we like that line in the rock to say?">Așa că experimentul acesta lasă în urmă o singură întrebare, și ea e despre acum. Ce am vrea să spună linia aceea din piatră?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <div class="colophon-inner">
+    <h2 data-i18n="foot.h0" data-en="About this timeline">Despre această cronologie</h2>
+    <p data-i18n="foot.p0" data-en="What would happen to Earth if humans disappeared tomorrow? This page follows that question from the first hours, as aircraft and power grids fail, through the centuries it takes cities to become forest, to the millions of years in which our world becomes a layer of rock. It is a thought experiment built on engineering studies, ecology and the fossil record. Many of its ideas were first gathered by Alan Weisman in &lt;i&gt;The World Without Us&lt;/i&gt; (2007).">Ce s-ar întâmpla cu Pământul dacă oamenii ar dispărea mâine? Pagina aceasta urmărește întrebarea din primele ore, când cad avioanele și rețelele electrice, prin secolele de care au nevoie orașele ca să devină pădure, până la milioanele de ani în care lumea noastră devine un strat de rocă. E un experiment de imaginație sprijinit pe studii de inginerie, ecologie și pe registrul fosil. Multe dintre idei au fost adunate pentru prima dată de Alan Weisman în <i>The World Without Us</i> (Lumea fără noi, 2007).</p>
+    <p data-i18n="foot.p1" data-en="How to read the times: a range such as 10–50 years shows how far serious estimates spread, and &lt;b&gt;~&lt;/b&gt; marks a rough value. &lt;b&gt;Scenario&lt;/b&gt; marks one modelled future among several, not a forecast. The maps and animations illustrate these estimates; they do not measure them.">Cum citești momentele: un interval precum 10–50 de ani arată cât de mult diferă estimările serioase, iar <b>~</b> marchează o valoare aproximativă. <b>Scenariu</b> înseamnă un viitor modelat dintre mai multe posibile, nu o prognoză. Hărțile și animațiile ilustrează aceste estimări; nu le măsoară.</p>
+    <h2 data-i18n="foot.h" data-en="Sources">Surse</h2>
+    <ol class="sources">
+      <li id="src-1">World Resources Institute (2021). Global Power Plant Database v1.3.0: 34,936 plants in 167 countries. No longer maintained since 2022. City lights: Natural Earth populated places. Maps: Natural Earth, world-atlas.</li>
+      <li id="src-2">NY1 (21 July 2026). “MTA trying to prevent subway flooding to keep service going”: 286 pump rooms remove 13 million gallons on a dry day.</li>
+      <li id="src-3">Weisman, A. (2007). <i>The World Without Us</i>, chapter “The City Without Us”. Thomas Dunne Books.</li>
+      <li id="src-4">Bar-On, Y. M., Phillips, R. &amp; Milo, R. (2018). The biomass distribution on Earth. <i>PNAS</i> 115, 6506–6511.</li>
+      <li id="src-5">Loss, S. R. et al. (2014). Bird–building collisions in the United States: estimates of annual mortality. <i>The Condor</i> 116, 8–23.</li>
+      <li id="src-6">US Nuclear Regulatory Commission (2001). Technical study of spent fuel pool accident risk at decommissioning nuclear power plants (NUREG-1738).</li>
+      <li id="src-7">Cernavodă NPP / IAEA technical meeting: CANDU 6 spent fuel management; intermediate dry storage (DICA, MACSTOR modules).</li>
+      <li id="src-8">Love, C. et al. (2026). Signatures of radiation-induced stress and putative selection on immune targets in Chornobyl wolves. <i>Molecular Ecology</i> 35(9).</li>
+      <li id="src-9">Falchi, F. et al. (2016). The new world atlas of artificial night sky brightness. <i>Science Advances</i> 2, e1600377.</li>
+      <li id="src-10">Matthews, H. D. &amp; Zickfeld, K. (2012). Climate response to zeroed emissions of greenhouse gases and aerosols. <i>Nature Climate Change</i> 2, 338–341.</li>
+      <li id="src-11">Deryabina, T. G. et al. (2015). Long-term census data reveal abundant wildlife populations at Chernobyl. <i>Current Biology</i> 25, R824–R826.</li>
+      <li id="src-12">Romanian Ministry of Environment, Waters and Forests (December 2025). Genetic study of the brown bear population: 10,657–12,787 individuals, from about 24,000 samples in 25 counties.</li>
+      <li id="src-13">NOAA Global Monitoring Laboratory. Trends in atmospheric carbon dioxide, global estimate, September 2026.</li>
+      <li id="src-14">Archer, D. et al. (2009). Atmospheric lifetime of fossil fuel carbon dioxide. <i>Annual Review of Earth and Planetary Sciences</i> 37, 117–134.</li>
+      <li id="src-15">Ganopolski, A., Winkelmann, R. &amp; Schellnhuber, H. J. (2016). Critical insolation–CO₂ relation for diagnosing past and future glacial inception. <i>Nature</i> 529, 200–203.</li>
+      <li id="src-16">Friedlingstein, P. et al. (2025). Global Carbon Budget 2025. <i>Earth System Science Data</i>. Cumulative fossil and land-use emissions, extrapolated to 2026.</li>
+      <li id="src-17">US National Park Service. Mount Rushmore National Memorial: geologic activity.</li>
+      <li id="src-18">Elhacham, E. et al. (2020). Global human-made mass exceeds all living biomass. <i>Nature</i> 588, 442–444. Comparison against dry biomass.</li>
+      <li id="src-19">Zalasiewicz, J. et al. (2016). The geological cycle of plastics and their use as a stratigraphic indicator of the Anthropocene. <i>Anthropocene</i> 13, 4–17.</li>
+      <li id="src-20">Bennett, C. E. et al. (2018). The broiler chicken as a signal of a human reconfigured biosphere. <i>Royal Society Open Science</i> 5, 180325.</li>
+      <li id="src-21">Kirchner, J. W. &amp; Weil, A. (2000). Delayed biological recovery from extinctions throughout the fossil record. <i>Nature</i> 404, 177–180.</li>
+      <li id="src-22">NASA Jet Propulsion Laboratory. Voyager: the Golden Record.</li>
+    </ol>
+    <p class="made"><a href="https://mariuscomper.uk">mariuscomper.uk</a></p>
+  </div>
+</footer>
+
+<script src="../vendor/d3-array.min.js" defer></script>
+<script src="../vendor/d3-geo.min.js" defer></script>
+<script src="../vendor/topojson-client.min.js" defer></script>
+<script src="../js/i18n.js" defer></script>
+<script src="../js/core.js" defer></script>
+<script src="../js/globe.js" defer></script>
+<script src="../js/worldmap.js" defer></script>
+<script src="../js/subway.js" defer></script>
+<script src="../js/animals.js" defer></script>
+<script src="../js/sky.js" defer></script>
+<script src="../js/city.js" defer></script>
+<script src="../js/romania.js" defer></script>
+<script src="../js/charts.js" defer></script>
+<script src="../js/strata.js" defer></script>
+<script src="../js/voyager.js" defer></script>
+</body>
+</html>

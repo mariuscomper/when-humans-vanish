@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mariuscomper.uk/when-humans-vanish/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mariuscomper.uk/when-humans-vanish/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://mariuscomper.uk/when-humans-vanish/ro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mariuscomper.uk/when-humans-vanish/"/>
+  </url>
+  <url>
+    <loc>https://mariuscomper.uk/when-humans-vanish/ro/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mariuscomper.uk/when-humans-vanish/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://mariuscomper.uk/when-humans-vanish/ro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mariuscomper.uk/when-humans-vanish/"/>
   </url>
 </urlset>

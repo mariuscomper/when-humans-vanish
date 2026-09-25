@@ -24,7 +24,19 @@ A deep-time gauge (left on desktop, bottom on mobile) tracks the elapsed time on
 
 ## Language
 
-English is written in `index.html`; Romanian lives in `js/i18n.js`. The page picks the language from `?lang=ro`, `#ro`, the last choice (localStorage), then the browser language. Links: `/#ro` or `/?lang=ro` for Romanian.
+English is written in `index.html`; Romanian lives in `js/i18n.js`. `ro/index.html` is **generated** from the two, so `/ro/` is a real Romanian page with its own `lang`, canonical and `hreflang`:
+
+```sh
+node tools/build-ro.js   # run after editing index.html or js/i18n.js
+```
+
+Both pages can switch language in place (the URL follows: `/` ⇄ `/ro/`). On the English address the page also honours the reader's last choice, then the browser language; `/ro/` always opens in Romanian.
+
+## How the page handles certainty
+
+Facts are stated plainly; estimates carry a range (`10–50 years`) or `~`; modelled futures carry a **scenario** tag. Key claims link to numbered sources in the footer. The maps and animations illustrate the estimates rather than measure them, and their captions say so.
+
+Everything a reader needs is in the HTML: without JavaScript the full story, the specimen cards and the longevity table still render. The canvases are decorative (`aria-hidden`) and each has a text description for screen readers.
 
 ## Run locally
 
@@ -42,7 +54,7 @@ It's a static site: upload the whole folder as-is (`index.html`, `css/`, `js/`, 
 - **GitHub Pages:** Settings → Pages → deploy from branch, root folder. For the apex domain add a `CNAME` file containing `mariuscomper.uk` and point the DNS A records at GitHub Pages.
 - **Netlify / Cloudflare Pages / Vercel:** no build command, publish directory `/`.
 - If it lives at a sub-path (e.g. `mariuscomper.uk/vanish/`) nothing needs changing, all paths are relative.
-- For link previews, change `og:image` in `index.html` to the absolute URL (e.g. `https://mariuscomper.uk/og.png`).
+- The canonical, `hreflang`, Open Graph and `sitemap.xml` URLs assume `https://mariuscomper.uk/when-humans-vanish/`. Change them in `index.html` (and re-run `tools/build-ro.js`) if it moves.
 
 ## Data
 

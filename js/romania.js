@@ -4,13 +4,13 @@
   const S = W.smooth;
 
   const MARKERS = [
+    { id: 'chernobyl', lon: 30.1, lat: 51.39, name: { en: 'Chornobyl', ro: 'Cernobîl' } },
     { id: 'carpathians', lon: 25.75, lat: 46.45, name: { en: 'Carpathians', ro: 'Carpații' } },
     { id: 'transfagarasan', lon: 24.62, lat: 45.6, name: { en: 'Transfăgărășan', ro: 'Transfăgărășan' }, dy: 16 },
     { id: 'delta', lon: 29.2, lat: 45.12, name: { en: 'Danube Delta', ro: 'Delta Dunării' } },
-    { id: 'irongates', lon: 22.53, lat: 44.67, name: { en: 'Iron Gates', ro: 'Porțile de Fier' } },
     { id: 'baragan', lon: 27.3, lat: 44.62, name: { en: 'Bărăgan', ro: 'Bărăgan' } },
+    { id: 'irongates', lon: 22.53, lat: 44.67, name: { en: 'Iron Gates', ro: 'Porțile de Fier' } },
     { id: 'bucharest', lon: 26.09, lat: 44.43, name: { en: 'Bucharest', ro: 'București' }, dy: 16 },
-    { id: 'chernobyl', lon: 30.1, lat: 51.39, name: { en: 'Chernobyl', ro: 'Cernobîl' } },
   ];
   const RIDGE = [[22.3, 47.9], [24.3, 47.8], [25.3, 47.3], [26.0, 46.6], [26.3, 45.9], [25.8, 45.5], [24.5, 45.5], [23.2, 45.3], [22.4, 45.4], [22.0, 45.0]];
   const APUSENI = [22.8, 46.5];
@@ -33,10 +33,15 @@
     let D = null, pts = [], markerEls = [], active = '', lastKey = '';
     const o = W.canvas(cv, () => { if (D) build(); });
 
-    Promise.all([W.load('region-ro.json'), W.load('rivers-ro.json')]).then(([region, rivers]) => {
-      D = { region, rivers, ro: region.features.find((f) => f.properties.n === 'Romania') };
-      build();
-    }).catch((e) => console.error(e));
+    // loaded and sampled only once the reader gets near this chapter
+    let asked = false;
+    const start = () => {
+      if (asked) return; asked = true;
+      Promise.all([W.load('region-ro.json'), W.load('rivers-ro.json')]).then(([region, rivers]) => {
+        D = { region, rivers, ro: region.features.find((f) => f.properties.n === 'Romania') };
+        build();
+      }).catch((e) => console.error(e));
+    };
 
     function build() {
       const mobile = o.w < 860;
@@ -47,9 +52,8 @@
       const path = d3.geoPath(proj);
       const node = el.querySelector('#ro-svg');
       node.setAttribute('viewBox', `0 0 ${o.w} ${o.h}`);
-      const title = node.querySelector('title').outerHTML;
       const ring = d3.geoCircle().center([30.1, 51.39]).radius(0.3)();
-      node.innerHTML = title + `
+      node.innerHTML = `
         <g>${D.region.features.filter((f) => f !== D.ro).map((f) => `<path d="${path(f)}" fill="rgba(236,230,214,0.035)" stroke="rgba(236,230,214,0.14)" stroke-width="0.7"/>`).join('')}</g>
         <path d="${path(D.ro)}" fill="none" stroke="rgba(236,230,214,0.55)" stroke-width="1.2"/>
         <g>${D.rivers.features.map((f) => {
@@ -105,6 +109,7 @@
     }
 
     function render({ s, t, now }) {
+      start();
       if (!D || !pts.length) return;
       const idx = Math.max(0, Math.min(sc.steps.length - 1, Math.round(s)));
       const want = sc.steps[idx] ? sc.steps[idx].dataset.marker || '' : '';

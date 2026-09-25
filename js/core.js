@@ -21,8 +21,11 @@
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 
+  // data/ sits next to js/, whichever page (/ or /ro/) loaded us
+  const src = document.currentScript && document.currentScript.src;
+  const ROOT = src ? new URL('../', src) : new URL('./', location.href);
   const cache = {};
-  WHV.load = (name) => (cache[name] = cache[name] || fetch('data/' + name).then((r) => {
+  WHV.load = (name) => (cache[name] = cache[name] || fetch(new URL('data/' + name, ROOT)).then((r) => {
     if (!r.ok) throw new Error(name + ' ' + r.status);
     return r.json();
   }));
@@ -43,7 +46,7 @@
   };
 
   /** Human duration for a time in years. */
-  WHV.fmtT = (t) => {
+  WHV.fmtT = (t, exact) => {
     const ro = WHV.lang === 'ro';
     if (t <= TMIN * 1.5) return ro ? 'acum' : 'now';
     const h = t * 8766;
@@ -53,7 +56,7 @@
     if (d < 14) return unit(Math.round(d), ro ? 'zi' : 'day', ro ? 'zile' : 'days');
     if (d < 60) return unit(Math.round(d / 7), ro ? 'săptămână' : 'week', ro ? 'săptămâni' : 'weeks');
     if (t < 0.96) return unit(Math.max(2, Math.round(t * 12)), ro ? 'lună' : 'month', ro ? 'luni' : 'months');
-    if (t < 1e6) return unit(Math.max(1, nice(t)), ro ? 'an' : 'year', ro ? 'ani' : 'years');
+    if (t < 1e6) return unit(Math.max(1, exact ? Math.round(t) : nice(t)), ro ? 'an' : 'year', ro ? 'ani' : 'years');
     if (t < 0.95e9) {
       const m = nice(t / 1e6);
       if (ro) return m === 1 ? '1 milion de ani' : `${WHV.nf(m)} ${deRo(m)}milioane de ani`;
@@ -140,10 +143,36 @@
   }
 
   /* ---------------------------------------------------------- stamps */
+  // the number that goes in front of a range's upper end, in that end's unit ("10–50 years", "1–12 hours")
+  function lowInUnitOf(a, b) {
+    const h = b * 8766, d = b * 365.25;
+    if (h < 48) return Math.round(a * 8766);
+    if (d < 14) return Math.round(a * 365.25);
+    if (d < 60) return Math.round(a * 365.25 / 7);
+    if (b < 0.96) return Math.round(a * 12);
+    if (b < 1e6) return nice(a);
+    if (b < 0.95e9) return nice(a / 1e6);
+    return nice(a / 1e9);
+  }
+  const TAGS = { scenario: { en: 'scenario', ro: 'scenariu' } };
+
+  /** Stamps say how sure we are: a range, "~" for a rough value, a tag for modelled futures. */
   WHV.fillStamps = () => {
     document.querySelectorAll('.step[data-t] .stamp:not([data-i18n])').forEach((el) => {
-      const t = +el.closest('.step').dataset.t;
-      el.textContent = '+ ' + WHV.fmtT(t);
+      const st = el.closest('.step'), t = +st.dataset.t;
+      let txt;
+      if (st.dataset.range) {
+        const [a, b] = st.dataset.range.split(',').map(Number);
+        txt = WHV.nf(lowInUnitOf(a, b)) + '–' + WHV.fmtT(b);
+      } else {
+        txt = (st.hasAttribute('data-approx') ? '~' : '') + WHV.fmtT(t, st.hasAttribute('data-exact'));
+      }
+      const tag = TAGS[st.dataset.tag];
+      el.innerHTML = '+ ' + txt + (tag ? ` <span class="tag">${WHV.tr(tag)}</span>` : '');
+    });
+    document.querySelectorAll('.step[data-tag] .stamp[data-i18n]').forEach((el) => {
+      const tag = TAGS[el.closest('.step').dataset.tag];
+      if (tag && !el.querySelector('.tag')) el.insertAdjacentHTML('beforeend', ` <span class="tag">${WHV.tr(tag)}</span>`);
     });
   };
 
@@ -152,7 +181,12 @@
   const timeEls = [...document.querySelectorAll('[data-t]')].filter((el) => !el.closest('.scene') || el.classList.contains('step'));
   const bgEls = [...document.querySelectorAll('[data-bg]')];
   let vh = innerHeight;
-  addEventListener('resize', () => { vh = innerHeight; });
+  // layout is only read when something moved, not on every animation frame
+  let dirty = true;
+  const touch = () => { dirty = true; };
+  addEventListener('resize', () => { vh = innerHeight; dirty = true; });
+  addEventListener('scroll', touch, { passive: true });
+  new ResizeObserver(touch).observe(document.body);
 
   function measureTime() {
     const L = (t) => Math.log10(Math.max(+t, TMIN));
@@ -202,12 +236,16 @@
   function frame(now) {
     const dt = Math.min(0.1, (now - last) / 1000);
     last = now;
-    WHV.t = measureTime();
-    drawGauge(WHV.t);
-    measureBg();
+    const measure = dirty;
+    dirty = false;
+    if (measure) {
+      WHV.t = measureTime();
+      drawGauge(WHV.t);
+      measureBg();
+    }
     for (const sc of scenes) {
       if (!sc.visible || !sc.api) continue;
-      measureScene(sc);
+      if (measure || sc.fresh) { measureScene(sc); sc.fresh = false; }
       try { sc.api.render({ p: sc.p, s: sc.s, t: WHV.clamp(WHV.t, sc.tMin, sc.tMax), now, dt }); } catch (e) { console.error(sc.name, e); sc.api = null; }
     }
     requestAnimationFrame(frame);
@@ -215,7 +253,7 @@
 
   WHV.boot = () => {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { const sc = scenes.find((s) => s.el === e.target); if (sc) sc.visible = e.isIntersecting; });
+      entries.forEach((e) => { const sc = scenes.find((s) => s.el === e.target); if (sc) { sc.visible = e.isIntersecting; sc.fresh = true; } });
     }, { rootMargin: '25% 0px 25% 0px' });
     document.querySelectorAll('[data-scene]').forEach((el) => {
       const name = el.dataset.scene;
@@ -236,10 +274,11 @@
       try { const api = WHV.factories[n](); scenes.push({ name: n, api, visible: false, steps: [] }); } catch (e) { console.error(n, e); }
     });
     WHV.onLang = () => {
-      labelTicks(); lastGauge = ''; WHV.fillStamps();
+      labelTicks(); lastGauge = ''; dirty = true; WHV.fillStamps();
       scenes.forEach((sc) => sc.api && sc.api.lang && sc.api.lang());
     };
     WHV.initLang();
+    document.documentElement.classList.add('js-ready');
     requestAnimationFrame(frame);
   };
 
